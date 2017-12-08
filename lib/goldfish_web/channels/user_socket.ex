@@ -2,7 +2,7 @@ defmodule GoldfishWeb.UserSocket do
   use Phoenix.Socket
 
   ## Channels
-  # channel "room:*", GoldfishWeb.RoomChannel
+  channel "room:*", GoldfishWeb.RoomChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket,

@@ -43,7 +43,8 @@ defmodule GoldfishWeb.Router do
   defp put_user_token(conn, _) do
     case get_session(conn, :user_token) do
       nil ->
-        token = Phoenix.Token.sign(conn, "user token", %{})
+        ip_address = get_req_header(conn, "x-forwarded-for") || conn.remote_ip
+        token = Phoenix.Token.sign(conn, "user socket", ip_address)
         conn
         |> put_session(:user_token, token)
         |> assign(:user_token, token)

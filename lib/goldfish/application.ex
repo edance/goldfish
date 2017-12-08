@@ -12,6 +12,8 @@ defmodule Goldfish.Application do
       supervisor(Goldfish.Repo, []),
       # Start the endpoint when the application starts
       supervisor(GoldfishWeb.Endpoint, []),
+      # Start the presence
+      supervisor(GoldfishWeb.Presence, []),
       # Start your own worker by calling: Goldfish.Worker.start_link(arg1, arg2, arg3)
       # worker(Goldfish.Worker, [arg1, arg2, arg3]),
     ]
