@@ -21,6 +21,8 @@
        gtag('config', 'UA-110926713-1');
       </script>
     <% end %>
+
+    <script>window.userToken = "<%= assigns[:user_token] %>";</script>
   </head>
 
   <body>

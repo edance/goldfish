@@ -11,6 +11,7 @@ defmodule GoldfishWeb.Router do
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource, allow_blank: true
     plug :set_user
+    plug :put_user_token
   end
 
   pipeline :api do
@@ -36,6 +37,18 @@ defmodule GoldfishWeb.Router do
     case Goldfish.Guardian.Plug.current_resource(conn) do
       nil -> conn
       user -> assign(conn, :current_user, user)
+    end
+  end
+
+  defp put_user_token(conn, _) do
+    case get_session(conn, :user_token) do
+      nil ->
+        token = Phoenix.Token.sign(conn, "user token", %{})
+        conn
+        |> put_session(:user_token, token)
+        |> assign(:user_token, token)
+      token ->
+        conn |> assign(:user_token, token)
     end
   end
 end
