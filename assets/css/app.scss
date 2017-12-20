@@ -1,16 +1,7 @@
 /* This file is for your main application css. */
-@import url('https://fonts.googleapis.com/css?family=Open+Sans|Space+Mono');
+@import 'layout';
+@import 'components/base';
 
-* {
-  box-sizing: border-box;
-}
-body {
-  font-family: 'Space Mono', monospace;
-  font-size: 16px;
-  margin: 0 !important;
-  padding: 0 !important;
-  background: #fbf8f4;
-}
 .ui.container {
   height: 100%;
   width: 100%;
@@ -20,27 +11,10 @@ body {
 main {
   display: flex;
 }
-.sidebar {
-  width: 500px;
-  padding: 1em;
-}
 .chat.container {
   height: 100vh;
   width: 100%;
   position: relative;
-}
-img.prof {
-  border-radius: 50%;
-  width: 300px;
-}
-.textbox {
-  position: absolute;
-  bottom: 0;
-  padding: 0.6em 1em;
-  width: 100%;
-  border: 1px solid rgba(34, 36, 38, 0.15);
-  border-radius: 2px;
-  outline: none;
 }
 .messages {
   height: 100%;
