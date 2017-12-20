@@ -1,15 +1,49 @@
-<p>Evan Dancer</p>
-<p>Software Engineer</p>
-
-<a href="https://github.com/edance/" target="_blank">Github</a>
-<a href="https://www.linkedin.com/in/evan-dancer" target="_blank">LinkedIn</a>
-<a href="https://www.facebook.com/edancer" target="_blank">Facebook</a>
-<a href="https://twitter.com/mmmmpizzza" target="_blank">Twitter</a>
-<a href="https://medium.com/@edance" target="_blank">Medium</a>
-
-<div id="messages">
-  <%= for message <- @messages do %>
-    <li><%= message.body %></li>
-  <% end %>
+<div class="sidebar">
+  <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
+  <h1>Evan Dancer</h1>
+  <p class="bio">
+    Software Engineer
+  </p>
+  <div class="links container">
+    <div class="link">
+      <a href="https://github.com/edance/" target="_blank">Github</a>
+    </div>
+    <div class="link">
+      <a href="https://www.linkedin.com/in/evan-dancer" target="_blank">LinkedIn</a>
+    </div>
+    <div class="link">
+      <a href="https://www.facebook.com/edancer" target="_blank">Facebook</a>
+    </div>
+    <div class="link">
+      <a href="https://twitter.com/mmmmpizzza" target="_blank">Twitter</a>
+    </div>
+    <div class="link">
+      <a href="https://medium.com/@edance" target="_blank">Medium</a>
+    </div>
+  </div>
 </div>
-<input id="chat-input" type="text"></input>
+<div class="chat container">
+  <div class="messages">
+    <%= for message <- @messages do %>
+      <li><%= message.body %></li>
+    <% end %>
+    <div class="clearing">
+      <div class="message">
+        Hello there? sup?
+        <div class="time">
+          19:00
+        </div>
+      </div>
+    </div>
+    <div class="clearing">
+      <div class="bot message">
+        Hello there? sup?
+        <div class="time">
+          19:00
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="textbox" contenteditable="true" role="textbox" aria-multiline="true">
+  </div>
+</div>
