@@ -7,5 +7,9 @@
 <a href="https://twitter.com/mmmmpizzza" target="_blank">Twitter</a>
 <a href="https://medium.com/@edance" target="_blank">Medium</a>
 
-<div id="messages"></div>
+<div id="messages">
+  <%= for message <- @messages do %>
+    <li><%= message.body %></li>
+  <% end %>
+</div>
 <input id="chat-input" type="text"></input>

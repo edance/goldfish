@@ -1,7 +1,10 @@
 defmodule GoldfishWeb.PageController do
   use GoldfishWeb, :controller
 
+  alias Goldfish.Chat
+
   def index(conn, _params) do
-    render conn, "index.html"
+    messages = Chat.list_messages(conn.assigns.room_id)
+    render(conn, "index.html", messages: messages)
   end
 end

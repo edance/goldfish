@@ -14,12 +14,16 @@ defmodule Goldfish.Chat do
 
   ## Examples
 
-      iex> list_messages()
+      iex> list_messages(room_id)
       [%Message{}, ...]
 
   """
-  def list_messages do
-    Repo.all(Message)
+  def list_messages(room_id) do
+    query = from m in Message,
+      where: m.room_id == ^room_id,
+      order_by: m.inserted_at,
+      preload: [:user]
+    Repo.all(query)
   end
 
   @doc """
@@ -62,10 +66,10 @@ defmodule Goldfish.Chat do
 
   ## Examples
 
-      iex> create_message(%User{}, %{field: value})
+      iex> create_message(%{field: value})
       {:ok, %Message{}}
 
-      iex> create_message(%User{}, %{field: bad_value})
+      iex> create_message(%{field: bad_value})
       {:error, %Ecto.Changeset{}}
 
   """
