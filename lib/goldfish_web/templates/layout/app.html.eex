@@ -22,7 +22,8 @@
       </script>
     <% end %>
 
-    <script>window.userToken = "<%= assigns[:user_token] %>";</script>
+    <script>window.roomId = "<%= assigns[:room_id] %>";</script>
+    <script>window.userToken = "<%= Guardian.Plug.current_token(@conn) %>";</script>
   </head>
 
   <body>

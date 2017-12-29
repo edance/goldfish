@@ -7,11 +7,11 @@ defmodule GoldfishWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug :put_room_id
     plug Guardian.Plug.Pipeline, module: Goldfish.Guardian, error_handler: Goldfish.AuthErrorHandler
     plug Guardian.Plug.VerifySession
     plug Guardian.Plug.LoadResource, allow_blank: true
     plug :set_user
-    plug :put_user_token
   end
 
   pipeline :authenticate_user do
@@ -50,16 +50,15 @@ defmodule GoldfishWeb.Router do
     end
   end
 
-  defp put_user_token(conn, _) do
-    case get_session(conn, :user_token) do
+  defp put_room_id(conn, _) do
+    case get_session(conn, :room_id) do
       nil ->
         ip_address = get_req_header(conn, "x-forwarded-for") || conn.remote_ip
-        token = Phoenix.Token.sign(conn, "user socket", ip_address)
+        token = Phoenix.Token.sign(conn, "room", ip_address)
         conn
-        |> put_session(:user_token, token)
-        |> assign(:user_token, token)
-      token ->
-        conn |> assign(:user_token, token)
+        |> put_session(:room_id, token)
+        |> assign(:room_id, token)
+      token -> assign(conn, :room_id, token)
     end
   end
 end

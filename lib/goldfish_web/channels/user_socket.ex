@@ -5,24 +5,30 @@ defmodule GoldfishWeb.UserSocket do
   channel "room:*", GoldfishWeb.RoomChannel
 
   ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket,
-    timeout: 45_000
+  transport :websocket, Phoenix.Transports.WebSocket, timeout: 45_000
 
-  # transport :longpoll, Phoenix.Transports.LongPoll
+  @doc """
+  Connects and authenticates a user with a token
+  """
+  def connect(%{"token" => token}, socket) do
+    case Guardian.Phoenix.Socket.authenticate(socket, Goldfish.Guardian, token) do
+      {:ok, authed_socket} -> set_user(authed_socket)
+      {:error, _} -> :error
+    end
+  end
 
-  # Socket params are passed from the client and can
-  # be used to verify and authenticate a user. After
-  # verification, you can put default assigns into
-  # the socket that will be set for all channels, ie
-  #
-  #     {:ok, assign(socket, :user_id, verified_user_id)}
-  #
-  # To deny connection, return `:error`.
-  #
-  # See `Phoenix.Token` documentation for examples in
-  # performing token verification on connect.
+  @doc """
+  Connects and authenticates an anonymous user
+  """
   def connect(_params, socket) do
     {:ok, socket}
+  end
+
+  defp set_user(socket) do
+    case Guardian.Phoenix.Socket.current_resource(socket) do
+      nil -> :error
+      user -> {:ok, assign(socket, :current_user, user)}
+    end
   end
 
   # Socket id's are topics that allow you to identify all sockets for a given user:
