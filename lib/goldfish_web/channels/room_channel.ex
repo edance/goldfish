@@ -1,12 +1,33 @@
 defmodule GoldfishWeb.RoomChannel do
   use GoldfishWeb, :channel
 
-  def join("room:" <> room_id, payload, socket) do
-    {:ok, socket}
+  alias Goldfish.Chat
+
+  def join("room:" <> room_id, _params, socket) do
+    {:ok, assign(socket, :room_id, room_id)}
   end
 
-  def handle_in("new_msg", %{"body" => body}, socket) do
-    broadcast!(socket, "new_msg", %{body: body})
-    {:noreply, socket}
+  def handle_in("new_msg", params, socket) do
+    case create_message(socket, params) do
+      {:ok, message} ->
+        broadcast_message(socket, message)
+        {:reply, :ok, socket}
+      {:error, changeset} ->
+        {:reply, :error, socket}
+    end
+  end
+
+  defp create_message(socket, params) do
+    if socket.assigns.current_user do
+      Chat.create_message(socket.assigns.current_user, params)
+    else
+      Chat.create_message(params)
+    end
+  end
+
+  defp broadcast_message(socket, message) do
+    # rendered_message = Phoenix.View.render_one(message, Sling.MessageView, "message.json")
+    rendered_message = %{body: message.body}
+    broadcast!(socket, "new_msg", rendered_message)
   end
 end
