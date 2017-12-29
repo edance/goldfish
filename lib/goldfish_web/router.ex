@@ -27,14 +27,15 @@ defmodule GoldfishWeb.Router do
 
     get "/", PageController, :index
 
+    # Route to login
     resources "/sessions", SessionController, only: [:new, :create, :delete],
                                              singleton: true
   end
 
-  scope "/cms", GoldfishWeb.CMS, as: :cms do
+  scope "/admin", GoldfishWeb, as: :admin do
     pipe_through [:browser, :authenticate_user]
 
-    resources "/pages", PageController
+    resources "/pages", CMS.PageController
   end
 
   # Other scopes may use custom stacks.

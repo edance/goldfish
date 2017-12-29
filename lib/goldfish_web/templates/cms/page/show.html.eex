@@ -24,5 +24,5 @@
 
 </ul>
 
-<span><%= link "Edit", to: cms_page_path(@conn, :edit, @page) %></span>
-<span><%= link "Back", to: cms_page_path(@conn, :index) %></span>
+<span><%= link "Edit", to: admin_page_path(@conn, :edit, @page) %></span>
+<span><%= link "Back", to: admin_page_path(@conn, :index) %></span>
