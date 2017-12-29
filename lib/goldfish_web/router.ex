@@ -14,6 +14,10 @@ defmodule GoldfishWeb.Router do
     plug :put_user_token
   end
 
+  pipeline :authenticate_user do
+    plug Guardian.Plug.EnsureAuthenticated
+  end
+
   pipeline :api do
     plug :accepts, ["json"]
   end
@@ -23,9 +27,14 @@ defmodule GoldfishWeb.Router do
 
     get "/", PageController, :index
 
-    get    "/login",  SessionController, :new
-    post   "/login",  SessionController, :create
-    delete "/logout", SessionController, :delete
+    resources "/sessions", SessionController, only: [:new, :create, :delete],
+                                             singleton: true
+  end
+
+  scope "/cms", GoldfishWeb.CMS, as: :cms do
+    pipe_through [:browser, :authenticate_user]
+
+    resources "/pages", PageController
   end
 
   # Other scopes may use custom stacks.
