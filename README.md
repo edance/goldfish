@@ -2,6 +2,7 @@
 
 To start your Phoenix server:
 
+  * Copy environment variables with `cp .env.example .env`
   * Install dependencies with `mix deps.get`
   * Create and migrate your database with `mix ecto.create && mix ecto.migrate`
   * Install Node.js dependencies with `cd assets && yarn`
