@@ -12,12 +12,13 @@ defmodule GoldfishWeb.RoomChannel do
       {:ok, message} ->
         broadcast_message(socket, message)
         {:reply, :ok, socket}
-      {:error, changeset} ->
+      {:error, _changeset} ->
         {:reply, :error, socket}
     end
   end
 
   defp create_message(socket, params) do
+    params = Map.put(params, "room_id", socket.assigns.room_id)
     if socket.assigns.current_user do
       Chat.create_message(socket.assigns.current_user, params)
     else
