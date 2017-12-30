@@ -4,7 +4,7 @@ defmodule GoldfishWeb.NotificationChannel do
   alias Goldfish.Chat
 
   def join("notifications", _params, socket) do
-    if Guardian.Phoenix.Socket.authenticated? do
+    if Guardian.Phoenix.Socket.authenticated?(socket) do
       {:ok, socket}
     else
       :error

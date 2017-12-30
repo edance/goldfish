@@ -3,6 +3,7 @@ defmodule GoldfishWeb.UserSocket do
 
   ## Channels
   channel "room:*", GoldfishWeb.RoomChannel
+  channel "notifications", GoldfishWeb.NotificationChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket, timeout: 45_000
