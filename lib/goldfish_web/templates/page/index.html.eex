@@ -25,24 +25,8 @@
 <div class="chat container">
   <div class="messages">
     <%= for message <- @messages do %>
-      <li><%= message.body %></li>
+      <%= render GoldfishWeb.SharedView, "message.html", message: message %>
     <% end %>
-    <div class="clearing">
-      <div class="message">
-        Hello there? sup?
-        <div class="time">
-          19:00
-        </div>
-      </div>
-    </div>
-    <div class="clearing">
-      <div class="bot message">
-        Hello there? sup?
-        <div class="time">
-          19:00
-        </div>
-      </div>
-    </div>
   </div>
   <div class="messagebox">
     <div class="input" contenteditable="true" role="textbox" aria-multiline="true">

@@ -1,0 +1,8 @@
+<div class="clearing">
+  <div class="message">
+    <%= @message.body %>
+    <div class="time">
+      19:00
+    </div>
+  </div>
+</div>
