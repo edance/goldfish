@@ -26,7 +26,11 @@
     <script>window.userToken = "<%= Guardian.Plug.current_token(@conn) %>";</script>
   </head>
 
-  <body>
+  <body class="<%= if @conn.assigns[:current_user] do %>header<% end %>" >
+    <%= if @conn.assigns[:current_user] do %>
+      <%= render GoldfishWeb.SharedView, "header.html", assigns %>
+    <% end %>
+
     <div class="ui container">
       <main role="main">
         <%= render @view_module, @view_template, assigns %>

@@ -1,0 +1,5 @@
+<header class="ui header">
+  Hi <%= @current_user.email %>,
+
+  <%= link "Logout", to: session_path(@conn, :delete), method: :delete %>
+</header>
