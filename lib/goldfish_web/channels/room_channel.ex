@@ -19,7 +19,7 @@ defmodule GoldfishWeb.RoomChannel do
 
   defp create_message(socket, params) do
     params = Map.put(params, "room_id", socket.assigns.room_id)
-    if socket.assigns.current_user do
+    if Guardian.Phoenix.Socket.authenticated?(socket) do
       Chat.create_message(socket.assigns.current_user, params)
     else
       Chat.create_message(params)

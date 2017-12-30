@@ -36,6 +36,7 @@ defmodule GoldfishWeb.Router do
     pipe_through [:browser, :authenticate_user]
 
     resources "/pages", CMS.PageController
+    resources "/rooms", Chat.RoomController, only: [:show]
   end
 
   # Other scopes may use custom stacks.
