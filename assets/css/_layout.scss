@@ -11,3 +11,34 @@ body {
   padding: 0 !important;
   background: $background-color;
 }
+
+.ui.container {
+  height: 100%;
+  width: 100%;
+  max-width: 80em;
+  margin: auto;
+}
+main {
+  display: flex;
+}
+.chat.container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  // overflow-y: auto;
+}
+.messages {
+  padding: 1em;
+  height: calc(100% - #{$messagebox-height} - #{$messagebox-margin});
+  overflow-y: auto;
+}
+.clearing {
+  clear: both;
+}
+
+// Rules if the user is logged in
+body.header {
+  .chat.container {
+    height: calc(100vh - #{$header-height});
+  }
+}

@@ -5,5 +5,11 @@
   width: 100%;
   border: 1px solid rgba(34, 36, 38, 0.15);
   border-radius: 2px;
-  outline: none;
+
+  min-height: $messagebox-height;
+  margin-bottom: $messagebox-margin;
+
+  .input:focus {
+    outline: none;
+  }
 }
