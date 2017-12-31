@@ -1,5 +1,6 @@
 <header class="ui header">
-  Hi <%= @current_user.email %>,
-
+  <%= link "Home", to: page_path(@conn, :index) %>
+  <%= link "Posts", to: admin_page_path(@conn, :index) %>
+  <%= link "Chat", to: admin_room_path(@conn, :index) %>
   <%= link "Logout", to: session_path(@conn, :delete), method: :delete %>
 </header>
