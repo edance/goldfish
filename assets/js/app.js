@@ -21,3 +21,4 @@ import "phoenix_html";
 import './header';
 import './chat';
 import './message-nav';
+import './messagebox';

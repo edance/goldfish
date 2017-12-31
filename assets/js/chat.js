@@ -3,7 +3,7 @@ import $ from 'jquery';
 
 let channel           = socket.channel(`room:${window.roomId}`, {});
 let chatInput         = $('#chat-input');
-let messagesContainer = document.querySelector('#messages');
+let messagesContainer = $('#messages');
 
 chatInput.on('paste', event => {
   event.stopPropagation();
@@ -36,7 +36,14 @@ channel.on('new_msg', payload => {
 
   let messageItem = document.createElement('div');
   messageItem.innerHTML = template;
-  messagesContainer.appendChild(messageItem);
+  messagesContainer.append(messageItem);
+  scrollToBottom();
 });
+
+const scrollToBottom = ()=> {
+  messagesContainer.scrollTop(messagesContainer[0].scrollHeight);
+};
+
+scrollToBottom();
 
 channel.join();
