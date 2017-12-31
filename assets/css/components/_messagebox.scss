@@ -9,6 +9,10 @@
   min-height: $messagebox-height;
   margin-bottom: $messagebox-margin;
 
+  max-height: 150px;
+
+  overflow-y: auto;
+
   .input:focus {
     outline: none;
   }
