@@ -54,12 +54,18 @@ defmodule GoldfishWeb.Router do
   defp put_room_id(conn, _) do
     case get_session(conn, :room_id) do
       nil ->
-        ip_address = get_req_header(conn, "x-forwarded-for") || conn.remote_ip
-        token = Phoenix.Token.sign(conn, "room", ip_address)
+        token = Phoenix.Token.sign(conn, "room", get_ip_address(conn))
         conn
         |> put_session(:room_id, token)
         |> assign(:room_id, token)
       token -> assign(conn, :room_id, token)
+    end
+  end
+
+  defp get_ip_address(conn) do
+    case get_req_header(conn, "x-forwarded-for") do
+      [x] -> x
+      [] -> to_string(:inet_parse.ntoa(conn.remote_ip))
     end
   end
 end
