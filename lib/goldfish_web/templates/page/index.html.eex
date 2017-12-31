@@ -24,7 +24,7 @@
 </div>
 <div class="chat container">
   <div id="messages" class="messages">
-    <%= for message <- @messages do %>
+    <%= for message <- Enum.reverse(@messages) do %>
       <%= render GoldfishWeb.MessageView, "show.html", message: message %>
     <% end %>
   </div>
