@@ -1,6 +1,10 @@
 import notifications from './notifications';
+import $ from 'jquery';
+
+let container = $('#message-nav');
 
 notifications.on('new_msg', payload => {
-  debugger;
-  // Add to the message nav
+  let messageItem = document.createElement('li');
+  messageItem.innerText = payload.body;
+  container.prepend(messageItem);
 });
