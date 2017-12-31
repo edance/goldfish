@@ -25,7 +25,7 @@
 <div class="chat container">
   <div id="messages" class="messages">
     <%= for message <- @messages do %>
-      <%= render GoldfishWeb.SharedView, "message.html", message: message %>
+      <%= render GoldfishWeb.MessageView, "show.html", message: message %>
     <% end %>
   </div>
   <div class="messagebox">

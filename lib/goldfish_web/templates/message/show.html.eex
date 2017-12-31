@@ -1,5 +1,5 @@
 <div class="clearing">
-  <div class="message">
+  <div class="message <%= if bot(@message) do %>bot<% end %>">
     <%= @message.body %>
     <div class="time">
       <%= relative_time(@message.inserted_at) %>

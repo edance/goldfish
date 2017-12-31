@@ -25,8 +25,17 @@ chatInput.on('keypress', event => {
 });
 
 channel.on('new_msg', payload => {
-  let messageItem = document.createElement('li');
-  messageItem.innerText = payload.body;
+  const className = payload.bot ? 'bot' : '';
+  const template =
+        `<div class='clearing'>
+           <div class='message ${className}'>
+             ${payload.body}
+             <div class='time'>${payload.inserted_at}</div>
+           </div>
+         </div>`;
+
+  let messageItem = document.createElement('div');
+  messageItem.innerHTML = template;
   messagesContainer.appendChild(messageItem);
 });
 

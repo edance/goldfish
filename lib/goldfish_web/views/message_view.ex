@@ -5,12 +5,16 @@ defmodule GoldfishWeb.MessageView do
     datetime
   end
 
+  def bot(message) do
+    message.bot || message.user_id
+  end
+
   def render("message.json", %{message: message}) do
     %{
       id: message.id,
       inserted_at: message.inserted_at,
       body: message.body,
-      bot: message.bot || message.user_id,
+      bot: bot(message),
       ip_address: message.ip_address,
       room_id: message.room_id
     }
