@@ -10,6 +10,16 @@ defmodule Goldfish.Chat do
   alias Goldfish.Accounts.User
 
   @doc """
+  Returns a list of recent messages.
+  """
+  def list_messages() do
+    query = from m in Message,
+      order_by: [desc: m.inserted_at],
+      preload: [:user]
+    Repo.all(query)
+  end
+
+  @doc """
   Returns the list of messages.
 
   ## Examples
@@ -21,7 +31,7 @@ defmodule Goldfish.Chat do
   def list_messages(room_id) do
     query = from m in Message,
       where: m.room_id == ^room_id,
-      order_by: m.inserted_at,
+      order_by: [desc: m.inserted_at],
       preload: [:user]
     Repo.all(query)
   end
