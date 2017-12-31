@@ -27,8 +27,7 @@ defmodule GoldfishWeb.RoomChannel do
   end
 
   defp broadcast_message(socket, message) do
-    # rendered_message = Phoenix.View.render_one(message, Sling.MessageView, "message.json")
-    rendered_message = %{body: message.body}
+    rendered_message = Phoenix.View.render_one(message, GoldfishWeb.MessageView, "message.json")
     GoldfishWeb.Endpoint.broadcast("notifications", "new_msg", rendered_message)
     broadcast!(socket, "new_msg", rendered_message)
   end
