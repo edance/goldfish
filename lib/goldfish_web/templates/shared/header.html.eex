@@ -3,4 +3,8 @@
   <%= link "Posts", to: admin_page_path(@conn, :index) %>
   <%= link "Chat", to: admin_room_path(@conn, :index) %>
   <%= link "Logout", to: session_path(@conn, :delete), method: :delete %>
+
+  <div class="right menu">
+    <%= link to: admin_room_path(@conn, :index), id: "notification-counter" do %>
+    <% end %>
 </header>
