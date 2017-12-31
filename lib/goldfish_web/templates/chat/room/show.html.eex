@@ -1,3 +1,11 @@
+Recent Messages:
+<ul>
+  <%= for message <- @recent_messages do %>
+    <li><%= message.body %></li>
+  <% end %>
+</ul>
+
+
 <div class="chat container">
   <div id="messages" class="messages">
     <%= for message <- @messages do %>
