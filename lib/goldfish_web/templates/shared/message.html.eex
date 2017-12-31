@@ -2,7 +2,7 @@
   <div class="message">
     <%= @message.body %>
     <div class="time">
-      19:00
+      <%= relative_time(@message.inserted_at) %>
     </div>
   </div>
 </div>
