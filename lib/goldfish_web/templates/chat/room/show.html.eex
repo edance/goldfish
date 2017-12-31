@@ -1,9 +1,16 @@
-Recent Messages:
-<ul>
-  <%= for message <- @recent_messages do %>
-    <li><%= message.body %></li>
-  <% end %>
-</ul>
+<div class="toc">
+  Recent Messages:
+
+  <div class="message-nav">
+    <%= for message <- @recent_messages do %>
+      <%= link(to: admin_room_path(@conn, :show, message.room_id)) do %>
+        <div class="message-link">
+          <%= message.ip_address %>: <%= message.body %> <%= message.inserted_at %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
 
 
 <div class="chat container">

@@ -1,6 +1,5 @@
 import {Socket} from 'phoenix';
 
-// TODO: Fix no token
 let params = {};
 
 if (window.userToken) {
