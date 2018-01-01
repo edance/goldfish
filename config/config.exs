@@ -26,6 +26,10 @@ config :goldfish, Goldfish.Guardian,
   issuer: "goldfish",
   secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 
+config :ex_api_ai,
+  client_access_token: System.get_env("API_AI_CLIENT_TOKEN"),
+  developer_access_token: System.get_env("API_AI_DEVELOPER_TOKEN")
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env}.exs"

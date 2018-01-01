@@ -44,6 +44,7 @@ defmodule Goldfish.Mixfile do
       {:comeonin, "~> 4.0"},
       {:argon2_elixir, "~> 1.2"},
       {:guardian, "~> 1.0"},
+      {:ex_api_ai, "~> 0.2.2"},
     ]
   end
 

@@ -2,6 +2,7 @@ defmodule GoldfishWeb.RoomChannel do
   use GoldfishWeb, :channel
 
   alias Goldfish.Chat
+  alias GoldfishWeb.Presence
 
   def join("room:" <> room_id, _params, socket) do
     case Phoenix.Token.verify(socket, "room", room_id) do
@@ -19,9 +20,19 @@ defmodule GoldfishWeb.RoomChannel do
     case create_message(socket, params) do
       {:ok, message} ->
         broadcast_message(socket, message)
+        send_bot_response(socket, message)
         {:reply, :ok, socket}
       {:error, _changeset} ->
         {:reply, :error, socket}
+    end
+  end
+
+  def send_bot_response(socket, %{body: body}) do
+    opts = %{"sessionId" => socket.assigns.ip_address}
+    case ApiAi.text_request(body, opts) do
+      {:ok, %{"result" => result}} ->
+        create_bot_message(socket, result, Presence.list("notifications"))
+      {:ok, _} -> nil
     end
   end
 
@@ -41,4 +52,15 @@ defmodule GoldfishWeb.RoomChannel do
     GoldfishWeb.Endpoint.broadcast("notifications", "new_msg", rendered_message)
     broadcast!(socket, "new_msg", rendered_message)
   end
+
+  defp create_bot_message(socket, result, online_users) when online_users == %{} do
+    attrs = %{body: result["fulfillment"]["speech"],
+              bot: true,
+              room_id: socket.assigns.room_id}
+    case Chat.create_message(attrs) do
+      {:ok, message} -> broadcast_message(socket, message)
+    end
+  end
+
+  defp create_bot_message(_socket, _result, _users), do: nil
 end
