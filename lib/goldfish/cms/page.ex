@@ -7,6 +7,7 @@ defmodule Goldfish.CMS.Page do
   schema "pages" do
     field :body, :string
     field :title, :string
+    field :slug, :string
     field :views, :integer
 
     belongs_to :author, Author
@@ -17,7 +18,7 @@ defmodule Goldfish.CMS.Page do
   @doc false
   def changeset(%Page{} = page, attrs) do
     page
-    |> cast(attrs, [:title, :body])
-    |> validate_required([:title, :body])
+    |> cast(attrs, [:title, :body, :slug])
+    |> validate_required([:title, :body, :slug])
   end
 end
