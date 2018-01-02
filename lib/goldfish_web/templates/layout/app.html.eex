@@ -31,12 +31,10 @@
       <%= render GoldfishWeb.SharedView, "header.html", assigns %>
     <% end %>
 
-    <div class="ui container">
-      <main role="main">
-        <%= render @view_module, @view_template, assigns %>
-      </main>
+    <main role="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
 
-    </div> <!-- /container -->
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>
