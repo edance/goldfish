@@ -19,7 +19,7 @@
         <a href="https://twitter.com/mmmmpizzza" target="_blank">Twitter</a>
       </div>
       <div class="link">
-        <a href="https://medium.com/@edance" target="_blank">Medium</a>
+        <%= link("Posts", to: page_path(@conn, :index)) %>
       </div>
     </div>
   </div>
