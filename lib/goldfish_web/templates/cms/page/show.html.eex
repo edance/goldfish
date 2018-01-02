@@ -1,9 +1,1 @@
-<span><%= link "Edit", to: admin_page_path(@conn, :edit, @page) %></span>
-<span><%= link "Back", to: admin_page_path(@conn, :index) %></span>
-
-<h1><%= @page.title %></h1>
-<p><%= author_name(@page) %></p>
-<p>Views: <%= @page.views %> </p>
-<div class="content">
-  <%= raw(markdown(@page.body)) %>
-</div>
+<%= render GoldfishWeb.PageView, "show.html", assigns %>

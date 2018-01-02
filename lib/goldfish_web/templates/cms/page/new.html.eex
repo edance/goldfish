@@ -1,5 +1,5 @@
-<h2>New Page</h2>
+<div class="page new">
+  <h2>New Page</h2>
 
-<%= render "form.html", Map.put(assigns, :action, admin_page_path(@conn, :create)) %>
-
-<span><%= link "Back", to: admin_page_path(@conn, :index) %></span>
+  <%= render "form.html", Map.put(assigns, :action, admin_page_path(@conn, :create)) %>
+</div>

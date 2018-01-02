@@ -1,0 +1,24 @@
+<div class="sidebar">
+  <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
+  <h1>Evan Dancer</h1>
+  <p class="bio">
+    Software Engineer
+  </p>
+  <div class="links container">
+    <div class="link">
+      <a href="https://github.com/edance/" target="_blank">Github</a>
+    </div>
+    <div class="link">
+      <a href="https://www.linkedin.com/in/evan-dancer" target="_blank">LinkedIn</a>
+    </div>
+    <div class="link">
+      <a href="https://www.facebook.com/edancer" target="_blank">Facebook</a>
+    </div>
+    <div class="link">
+      <a href="https://twitter.com/mmmmpizzza" target="_blank">Twitter</a>
+    </div>
+    <div class="link">
+      <%= link("Posts", to: page_path(@conn, :index)) %>
+    </div>
+  </div>
+</div>
