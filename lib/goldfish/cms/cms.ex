@@ -45,6 +45,27 @@ defmodule Goldfish.CMS do
   end
 
   @doc """
+  Gets a single page by unique slug.
+
+  Raises `Ecto.NoResultsError` if the Page does not exist.
+
+  ## Examples
+
+  iex> get_page_by_slug!(123)
+  %Page{}
+
+  iex> get_page_by_slug!(456)
+  ** (Ecto.NoResultsError)
+
+  """
+  def get_page_by_slug!(slug) do
+    query = from p in Page,
+      where: p.slug == ^slug,
+      preload: [author: :user]
+    Repo.one!(query)
+  end
+
+  @doc """
   Creates a page.
 
   ## Examples

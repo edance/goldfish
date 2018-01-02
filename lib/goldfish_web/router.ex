@@ -26,6 +26,7 @@ defmodule GoldfishWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", HomeController, :index
+    resources "/pages", PageController, only: [:index, :show]
 
     # Route to login
     resources "/sessions", SessionController, only: [:new, :create, :delete],
