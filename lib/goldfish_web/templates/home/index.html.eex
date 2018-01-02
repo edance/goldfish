@@ -1,37 +1,11 @@
-<div class="ui home container">
-  <div class="sidebar">
-    <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
-    <h1>Evan Dancer</h1>
-    <p class="bio">
-      Software Engineer
-    </p>
-    <div class="links container">
-      <div class="link">
-        <a href="https://github.com/edance/" target="_blank">Github</a>
-      </div>
-      <div class="link">
-        <a href="https://www.linkedin.com/in/evan-dancer" target="_blank">LinkedIn</a>
-      </div>
-      <div class="link">
-        <a href="https://www.facebook.com/edancer" target="_blank">Facebook</a>
-      </div>
-      <div class="link">
-        <a href="https://twitter.com/mmmmpizzza" target="_blank">Twitter</a>
-      </div>
-      <div class="link">
-        <%= link("Posts", to: page_path(@conn, :index)) %>
-      </div>
-    </div>
+<div class="chat container">
+  <div id="messages" class="messages">
+    <%= for message <- Enum.reverse(@messages) do %>
+      <%= render GoldfishWeb.MessageView, "show.html", message: message %>
+    <% end %>
   </div>
-  <div class="chat container">
-    <div id="messages" class="messages">
-      <%= for message <- Enum.reverse(@messages) do %>
-        <%= render GoldfishWeb.MessageView, "show.html", message: message %>
-      <% end %>
-    </div>
-    <div class="messagebox">
-      <div id="chat-input" class="input" contenteditable="true" role="textbox" aria-multiline="true">
-      </div>
+  <div class="messagebox">
+    <div id="chat-input" class="input" contenteditable="true" role="textbox" aria-multiline="true">
     </div>
   </div>
 </div>
