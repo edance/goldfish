@@ -61,7 +61,7 @@ p {
   position: relative;
   padding-bottom: $messagebox-margin;
 }
-.messages {
+.messages-container {
   padding: 1em;
   height: calc(100% - #{$messagebox-height});
   overflow-y: auto;

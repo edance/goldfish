@@ -33,6 +33,7 @@ const addMessage = (message) => {
   let messageItem = document.createElement('div');
   messageItem.innerHTML = template;
   messagesContainer.append(messageItem);
+  setSpacerHeight();
   scrollToBottom();
 };
 
@@ -48,6 +49,23 @@ const sendWelcomeMessages = () => {
   });
 };
 
+const setSpacerHeight = () => {
+  const containerHeight = $('.messages-container').height();
+  const messageHeight = $('.messages').height();
+  if (messageHeight > containerHeight) {
+    return;
+  }
+  $('.spacer').height(containerHeight - messageHeight);
+};
+
+$('.messagebox').on('keyup', e => {
+  const $box = $(e.currentTarget);
+  const height = $box.outerHeight();
+  $('.messages-container').outerHeight($box.parent().height() - height);
+  setSpacerHeight();
+  scrollToBottom();
+});
+
 chatInput.on('keypress', event => {
   if(event.keyCode === 13 && !event.shiftKey){
     event.preventDefault();
@@ -58,10 +76,14 @@ chatInput.on('keypress', event => {
 
 channel.on('new_msg', addMessage);
 
-scrollToBottom();
+$('.chat.container').ready(() => {
+  setSpacerHeight();
+  scrollToBottom();
 
-if (!messagesContainer.html().trim()) {
-  sendWelcomeMessages();
-}
+  if (!messagesContainer.html().trim()) {
+    sendWelcomeMessages();
+  }
+
+});
 
 channel.join();
