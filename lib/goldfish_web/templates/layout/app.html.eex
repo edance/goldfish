@@ -9,6 +9,8 @@
 
     <title>Evan Dancer</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:300" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <%= if Mix.env == :prod do %>

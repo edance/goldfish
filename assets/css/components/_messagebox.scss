@@ -3,13 +3,16 @@
   bottom: $messagebox-margin;
   padding: 0.6em 1em;
   width: 100%;
-  box-shadow: 1px 0px 10px #f1f1f1;
-  border-radius: 2px;
   background: white;
   max-height: 150px;
   overflow-y: auto;
 
+  border-radius: 5px;
+  border: solid 1px $light-gray;
+
   min-height: $messagebox-height;
+
+  cursor: text;
 
   .input:focus {
     outline: none;

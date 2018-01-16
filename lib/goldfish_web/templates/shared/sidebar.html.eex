@@ -1,24 +1,42 @@
 <div class="sidebar">
   <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
-  <h1>Evan Dancer</h1>
+  <h1 class="name">Evan Dancer</h1>
   <p class="bio">
-    Software Engineer
+    I am a software engineer from University of Michigan. I like to write code and go on long runs on the beach.
   </p>
-  <div class="links container">
-    <div class="link">
-      <a href="https://github.com/edance/" target="_blank">Github</a>
+  <div class="social links container">
+    <a href="https://github.com/edance/" target="_blank">
+      <div class="social link">
+        <i class="icon-social-github"></i>
+      </div>
+    </a>
+    <a href="https://www.linkedin.com/in/evan-dancer" target="_blank">
+      <div class="social link">
+        <i class="icon-social-linkedin"></i>
+      </div>
+    </a>
+    <a href="https://www.facebook.com/edancer" target="_blank">
+      <div class="social link">
+        <i class="icon-social-facebook"></i>
+      </div>
+    </a>
+    <a href="https://twitter.com/mmmmpizzza" target="_blank">
+      <div class="social link">
+        <i class="icon-social-twitter"></i>
+      </div>
+    </a>
+  </div>
+
+  <h3>Recent Posts</h3>
+  <div class="post links container">
+    <div class="post link">
+      How to fix your mechanical keyboard
     </div>
-    <div class="link">
-      <a href="https://www.linkedin.com/in/evan-dancer" target="_blank">LinkedIn</a>
+    <div class="post link">
+      How to crack the coding interview
     </div>
-    <div class="link">
-      <a href="https://www.facebook.com/edancer" target="_blank">Facebook</a>
-    </div>
-    <div class="link">
-      <a href="https://twitter.com/mmmmpizzza" target="_blank">Twitter</a>
-    </div>
-    <div class="link">
-      <%= link("Posts", to: page_path(@conn, :index)) %>
+    <div class="post link">
+      Building a chatbot in elixir
     </div>
   </div>
 </div>

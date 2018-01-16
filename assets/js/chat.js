@@ -23,11 +23,11 @@ const scrollToBottom = ()=> {
 const addMessage = (message) => {
   const className = message.bot ? 'bot' : '';
   const template =
-        `<div class='clearing'>
-           <div class='message ${className}'>
+        `<div class='message ${className}'>
+           <div class='body'>
              ${message.body}
-             <div class='time'>${message.inserted_at}</div>
            </div>
+           <div class='time'>${message.inserted_at}</div>
          </div>`;
 
   let messageItem = document.createElement('div');

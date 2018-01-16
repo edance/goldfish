@@ -4,7 +4,7 @@
   height: $header-height;
   width: 100%;
   padding: 0 1em;
-  background: $header-color;
+  background: rgba($secondary, .3);
 
   .right.menu {
     float: right;

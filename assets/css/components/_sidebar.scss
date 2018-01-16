@@ -1,9 +1,63 @@
+@import 'variables';
+
 .sidebar {
-  width: 500px;
-  padding: 1em;
+  width: 280px;
+  margin: 2em;
+  text-align: center;
 
   .prof {
     border-radius: 50%;
-    width: 300px;
+    width: 205px;
+    height: 205px;
+    border: solid 5px $light-gray;
+  }
+
+  .name {
+    margin: 16px 0 0;
+  }
+
+  .bio {
+    margin: 2px 0 22px;
+  }
+
+  h3 {
+    margin: 38px 0 19px;
+  }
+
+  .social.link {
+    display: inline-block;
+    width: 43px;
+    height: 43px;
+    font-size: 20px;
+    line-height: 43px;
+    text-align: center;
+    color: $dark-gray;
+    border: solid 1px $light-gray;
+    border-radius: 50%;
+  }
+
+  .post.links.container {
+    text-align: left;
+  }
+
+  .post.link {
+    font-size: 14px;
+    color: $dark-gray;
+    margin-bottom: 11px;
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 5px;
+      height: 5px;
+      border: solid 1px $primary;
+      border-radius: 50%;
+    }
+  }
+
+  .post.link:nth-child(even) {
+    &::before {
+      border-color: $secondary;
+    }
   }
 }
