@@ -5,17 +5,6 @@ let channel           = socket.channel(`room:${window.roomId}`, {});
 let chatInput         = $('#chat-input');
 let messagesContainer = $('#messages');
 
-chatInput.on('paste', event => {
-  event.stopPropagation();
-  event.preventDefault();
-
-  // Get pasted data via clipboard API
-  const data = event.originalEvent.clipboardData || window.clipboardData;
-  const text = data.getData('Text');
-
-  document.execCommand('insertText', false, text);
-});
-
 const scrollToBottom = ()=> {
   const $container = $('.messages-container');
   $container.scrollTop($container[0].scrollHeight);
@@ -23,13 +12,19 @@ const scrollToBottom = ()=> {
 
 const addMessage = (message) => {
   const className = message.bot ? 'bot' : '';
-  const template =
-        `<div class='message ${className}'>
-           <div class='body'>
-             ${message.body}
-           </div>
-           <div class='time'>${message.inserted_at}</div>
-         </div>`;
+  const template = `
+  <div class="message ${className}">
+    <img class="avatar" src="/images/prof.jpg" />
+
+    <div class="container">
+      <div class="body">
+        ${message.body}
+      </div>
+      <div class="time">
+        ${message.inserted_at}
+      </div>
+    </div>
+  </div>`;
 
   let messageItem = document.createElement('div');
   messageItem.innerHTML = template;
@@ -85,6 +80,13 @@ $('.chat.container').ready(() => {
     sendWelcomeMessages();
   }
 
+  $('.chat.container').click(() => {
+    const $input = $('.messagebox .input');
+    // Set focus for input
+    if ($input[0]) {
+      $input[0].focus();
+    }
+  });
 });
 
 channel.join();
