@@ -13,11 +13,14 @@
 // to also remove its path from "config.paths.watched".
 import "phoenix_html";
 
+// Import prism and languages
+import './prism';
+import './prism-elixir';
+
 // Import local files
 //
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
-
 import './header';
 import './chat';
 import './message-nav';
