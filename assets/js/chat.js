@@ -17,7 +17,8 @@ chatInput.on('paste', event => {
 });
 
 const scrollToBottom = ()=> {
-  messagesContainer.scrollTop(messagesContainer[0].scrollHeight);
+  const $container = $('.messages-container');
+  $container.scrollTop($container[0].scrollHeight);
 };
 
 const addMessage = (message) => {
