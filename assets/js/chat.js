@@ -16,7 +16,7 @@ const addMessage = (message) => {
   const date = moment(message.inserted_at).format('h:mm A');
   const template = `
   <div class="message ${className}">
-    <img class="avatar" src="/images/prof.jpg" />
+    <div class="avatar"></div>
 
     <div class="container">
       <div class="body">

@@ -9,6 +9,8 @@
     width: 53px;
     border-radius: 50%;
     border: solid 3px $light-gray;
+    background-position: center center;
+    background-image: url('/images/user_1.jpg');
   }
 
   .container {
@@ -47,5 +49,9 @@
     border: solid 1px rgba($primary, .5);
     border-top-right-radius: $message-border-radius;
     border-bottom-left-radius: 0;
+  }
+
+  .avatar {
+    background-image: url('/images/avatar.jpg');
   }
 }

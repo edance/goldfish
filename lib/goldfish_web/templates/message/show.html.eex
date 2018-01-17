@@ -1,5 +1,6 @@
 <div class="message <%= if bot(@message) do %>bot<% end %>">
-  <img class="avatar" src="/images/prof.jpg" />
+  <div class="avatar">
+  </div>
 
   <div class="container">
     <div class="body">
