@@ -27,16 +27,12 @@
     </a>
   </div>
 
-  <h3>Recent Posts</h3>
-  <div class="post links container">
-    <div class="post link">
-      How to fix your mechanical keyboard
+  <%= if @conn.assigns[:pages] do %>
+    <h3>Recent Posts</h3>
+    <div class="post links container">
+      <%= for page <- @pages do %>
+        <%= link(page.title, to: page_path(@conn, :show, page.slug), class: "post link") %>
+      <% end %>
     </div>
-    <div class="post link">
-      How to crack the coding interview
-    </div>
-    <div class="post link">
-      Building a chatbot in elixir
-    </div>
-  </div>
+  <% end %>
 </div>
