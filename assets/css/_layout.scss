@@ -66,9 +66,6 @@ p {
   height: calc(100% - #{$messagebox-height});
   overflow-y: auto;
 }
-.clearing {
-  clear: both;
-}
 
 // Rules if the user is logged in
 body.header {
