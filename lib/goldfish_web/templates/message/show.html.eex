@@ -6,8 +6,7 @@
       <%= @message.body %>
     </div>
     <div class="time">
-      <%#= relative_time(@message.inserted_at) %>
-      12:22 PM
+      <%= @message.inserted_at %>
     </div>
   </div>
 </div>

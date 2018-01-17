@@ -1,5 +1,6 @@
 import socket from './socket';
 import $ from 'jquery';
+import moment from 'moment';
 
 let channel           = socket.channel(`room:${window.roomId}`, {});
 let chatInput         = $('#chat-input');
@@ -12,6 +13,7 @@ const scrollToBottom = ()=> {
 
 const addMessage = (message) => {
   const className = message.bot ? 'bot' : '';
+  const date = moment(message.inserted_at).format('h:mm A');
   const template = `
   <div class="message ${className}">
     <img class="avatar" src="/images/prof.jpg" />
@@ -21,7 +23,7 @@ const addMessage = (message) => {
         ${message.body}
       </div>
       <div class="time">
-        ${message.inserted_at}
+        ${date}
       </div>
     </div>
   </div>`;
