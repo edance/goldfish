@@ -12,6 +12,12 @@
     <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
 
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+    <link rel="mask-icon" href="/images/safari-pinned-tab.svg" color="#fd5c63">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <%= if Mix.env == :prod do %>
       <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110926713-1"></script>
