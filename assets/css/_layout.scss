@@ -46,6 +46,29 @@ p {
   display: block; /* For Firefox */
 }
 
+label {
+  display: block;
+  font-size: .85em;
+  margin-bottom: .2em;
+}
+
+input, textarea {
+  border-radius: 5px;
+  border: solid 1px $light-gray;
+  padding: 0.6em 1em;
+  margin-bottom: 1em;
+  outline: none;
+}
+
+button {
+  background: $white;
+  color: $dark-gray;
+  border-radius: 5px;
+  border: solid 1px $light-gray;
+  padding: 0.6em 1em;
+  cursor: pointer;
+}
+
 // Containers
 .ui.container {
   height: 100%;
