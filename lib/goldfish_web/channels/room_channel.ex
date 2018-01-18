@@ -28,7 +28,9 @@ defmodule GoldfishWeb.RoomChannel do
   end
 
   def send_bot_response(socket, %{body: body}) do
-    opts = %{"sessionId" => socket.assigns.ip_address}
+    # sessionId cannot be longer than 36 characters
+    session_id = socket.assigns.room_id |> String.slice(0..35)
+    opts = %{"sessionId" => session_id}
     case ApiAi.text_request(body, opts) do
       {:ok, %{"result" => result}} ->
         create_bot_message(socket, result, Presence.list("notifications"))
