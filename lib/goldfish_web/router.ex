@@ -65,7 +65,7 @@ defmodule GoldfishWeb.Router do
 
   defp get_ip_address(conn) do
     case get_req_header(conn, "x-forwarded-for") do
-      [x] -> x
+      [x] -> x |> String.split(",") |> List.first
       [] -> to_string(:inet_parse.ntoa(conn.remote_ip))
     end
   end
