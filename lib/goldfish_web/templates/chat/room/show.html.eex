@@ -1,11 +1,16 @@
 <div class="toc">
-  Recent Messages:
-
   <div id="message-nav" class="message-nav">
     <%= for message <- @recent_messages do %>
       <%= link(to: admin_room_path(@conn, :show, message.room_id)) do %>
         <div class="message-link">
-          <%= message.ip_address %>: <%= message.body %> <%= message.inserted_at %>
+          <div class="from">
+            <%= if message.bot do %>
+              Bot
+            <% else %>
+              <%= message.ip_address %>
+            <% end %>
+          </div>
+          <div class="body"><%= message.body %></div>
         </div>
       <% end %>
     <% end %>

@@ -22,6 +22,10 @@ defmodule GoldfishWeb.Router do
     plug :accepts, ["json"]
   end
 
+  pipeline :admin_layout do
+    plug :put_layout, {GoldfishWeb.LayoutView, :admin}
+  end
+
   scope "/", GoldfishWeb do
     pipe_through :browser # Use the default browser stack
 
@@ -34,7 +38,7 @@ defmodule GoldfishWeb.Router do
   end
 
   scope "/admin", GoldfishWeb, as: :admin do
-    pipe_through [:browser, :authenticate_user]
+    pipe_through [:browser, :authenticate_user, :admin_layout]
 
     resources "/pages", CMS.PageController
     resources "/rooms", Chat.RoomController, only: [:index, :show]
