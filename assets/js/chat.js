@@ -74,21 +74,21 @@ chatInput.on('keypress', event => {
 
 channel.on('new_msg', addMessage);
 
-$('.chat.container').ready(() => {
+if (messagesContainer.length) {
   setSpacerHeight();
   scrollToBottom();
 
   if (!messagesContainer.html().trim()) {
     sendWelcomeMessages();
   }
+}
 
-  $('.chat.container').click(() => {
-    const $input = $('.messagebox .input');
-    // Set focus for input
-    if ($input[0]) {
-      $input[0].focus();
-    }
-  });
+$('.chat.container').click(() => {
+  const $input = $('.messagebox .input');
+  // Set focus for input
+  if ($input[0]) {
+    $input[0].focus();
+  }
 });
 
 channel.join();
