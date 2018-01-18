@@ -1,14 +1,4 @@
 <div class="chat container">
-  <div class="messages-container">
-    <div class="spacer"></div>
-    <div id="messages" class="messages">
-      <%= for message <- Enum.reverse(@messages) do %>
-        <%= render GoldfishWeb.MessageView, "show.html", message: message %>
-      <% end %>
-    </div>
-  </div>
-  <div class="messagebox">
-    <div id="chat-input" class="input" placeholder="Type Something Here..." contenteditable="true" role="textbox" aria-multiline="true">
-    </div>
-  </div>
+  <%= render GoldfishWeb.SharedView, "message-container.html", assigns %>
+  <%= render GoldfishWeb.SharedView, "messagebox.html", assigns %>
 </div>
