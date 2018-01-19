@@ -13,7 +13,7 @@ const scrollToBottom = ()=> {
 
 const addMessage = (message) => {
   const className = message.bot ? 'bot' : '';
-  const date = moment(message.inserted_at).format('h:mm A');
+  const date = moment.utc(message.inserted_at).local().format('h:mm A');
   const template = `
   <div class="message ${className}">
     <div class="avatar"></div>

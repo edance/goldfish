@@ -2,7 +2,7 @@ defmodule GoldfishWeb.MessageView do
   use GoldfishWeb, :view
 
   def relative_time(datetime) do
-    datetime
+    Timex.format!(datetime, "%-l:%M %p", :strftime)
   end
 
   def bot(message) do

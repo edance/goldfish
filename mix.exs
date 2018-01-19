@@ -45,7 +45,8 @@ defmodule Goldfish.Mixfile do
       {:argon2_elixir, "~> 1.2"},
       {:guardian, "~> 1.0"},
       {:ex_api_ai, "~> 0.2.2"},
-      { :earmark, "~> 1.2.4" },
+      {:earmark, "~> 1.2.4"},
+      {:timex, "~> 3.1"},
     ]
   end
 

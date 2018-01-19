@@ -21,6 +21,7 @@ import './prism-elixir';
 //
 // Local files can be imported directly using relative
 // paths "./socket" or full ones "web/static/js/socket".
+import './timestamps';
 import './header';
 import './chat';
 import './message-nav';
