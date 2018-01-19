@@ -11,10 +11,17 @@
     border: solid 3px $light-gray;
     background-position: center center;
     background-image: url('/images/user_1.jpg');
+    flex: 0 0 auto;
+
+    @media screen and(max-width: $large-phone) {
+      display: none;
+    }
   }
 
   .container {
-    margin: 0 16px 30px;
+    @media screen and(min-width: $large-phone + 1) {
+      margin: 0 16px 30px;
+    }
   }
 
   .body {

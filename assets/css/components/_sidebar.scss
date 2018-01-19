@@ -1,15 +1,25 @@
 @import 'variables';
 
 .sidebar {
-  width: 280px;
-  margin: 2em 4em 0 0;
+  width: 100%;
+  margin: 2em 0;
   text-align: center;
+
+  @media screen and (min-width: $tablet) {
+    width: 280px;
+    margin: 2em 4em 0 0;
+  }
 
   .prof {
     border-radius: 50%;
-    width: 205px;
-    height: 205px;
     border: solid 5px $light-gray;
+    width: 100px;
+    height: 100px;
+
+    @media screen and (min-width: $large-phone + 1) {
+      width: 205px;
+      height: 205px;
+    }
   }
 
   .name {

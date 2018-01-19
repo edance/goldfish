@@ -71,6 +71,7 @@ button {
 
 // Containers
 .ui.container {
+  padding: 0 2em;
   height: 100%;
   width: 100%;
   max-width: 65em;
@@ -79,7 +80,7 @@ button {
 
 .chat.container {
   height: 100vh;
-  width: 100%;
+  flex: 1 1 auto;
   position: relative;
   padding-bottom: $messagebox-margin;
 }
