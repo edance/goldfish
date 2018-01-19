@@ -1,16 +1,19 @@
+@import 'mixins';
 @import 'variables';
+
+$avatar-size: 53px;
 
 .message {
   display: flex;
   flex-direction: row-reverse;
 
   .avatar {
-    height: 53px;
-    width: 53px;
+    height: $avatar-size;
+    width: $avatar-size;
     border-radius: 50%;
     border: solid 3px $light-gray;
-    background-position: center center;
-    background-image: url('/images/user_1.jpg');
+    background: url('/images/user.jpg') no-repeat center center;
+    @include image-2x('/images/user-2x.jpg', $avatar-size, $avatar-size);
     flex: 0 0 auto;
 
     @media screen and(max-width: $large-phone) {
@@ -60,5 +63,7 @@
 
   .avatar {
     background-image: url('/images/avatar.jpg');
+    background: url('/images/bot.jpg') no-repeat center center;
+    @include image-2x('/images/bot-2x.jpg', $avatar-size, $avatar-size);
   }
 }
