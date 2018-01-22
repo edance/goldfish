@@ -47,6 +47,7 @@ defmodule Goldfish.Mixfile do
       {:ex_api_ai, "~> 0.2.2"},
       {:earmark, "~> 1.2.4"},
       {:timex, "~> 3.1"},
+      {:yaml_elixir, "~> 1.3.1"},
     ]
   end
 

@@ -1,0 +1,71 @@
+###### RESUME QUESTIONS ######
+resume.current_compensation:
+  user:
+    - "what is your current compensation?"
+  response:
+    - ""
+
+resume.last_job:
+  user:
+    - "What's your last job?"
+  response:
+    - ""
+
+resume.skills:
+  user:
+    - "What is your strongest skill?"
+    - "What are your skills?"
+    - "what are you good at?"
+  response:
+    - ""
+
+resume.projects:
+  user:
+    - "projects"
+    - "what kind of projects have you worked on?"
+    - "What projects are you working on"
+    - "What projects"
+    - "What are some projects that you have worked on?"
+  response:
+    - ""
+
+resume.previous_employment:
+  user:
+    - "Where have you worked?"
+  response:
+    - ""
+
+resume.current_employment:
+  user:
+    - "what is your job role now?"
+    - "what is your job?"
+    - "where do you work?"
+  response:
+    - ""
+
+resume.seeking_job:
+  user:
+    - "are you looking for jobs"
+    - "are you seeking a job"
+  response:
+    - ""
+
+resume.experience:
+  user:
+    - "What is your experience"
+    - "What experience do you have"
+  response:
+    - ""
+
+resume.strengths:
+  user:
+    - "What are your strengths?"
+  response:
+    - ""
+
+resume.study:
+  user:
+    - "what did you study?"
+    - "what was your major"
+  response:
+    - ""
