@@ -1,4 +1,10 @@
+@import 'variables';
+
 .home.container {
   display: flex;
   flex-wrap: wrap-reverse;
+
+  @media screen and (min-width: $tablet) {
+    flex-wrap: nowrap;
+  }
 }
