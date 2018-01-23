@@ -18,8 +18,10 @@ defmodule GoldfishWeb.Router do
     plug Guardian.Plug.EnsureAuthenticated
   end
 
-  pipeline :api do
-    plug :accepts, ["json"]
+  pipeline :xml do
+    plug :accepts, ["xml"]
+    plug :put_layout, {GoldfishWeb.LayoutView, :none}
+    plug :put_resp_content_type, "application/xml"
   end
 
   pipeline :admin_layout do
@@ -44,10 +46,11 @@ defmodule GoldfishWeb.Router do
     resources "/rooms", Chat.RoomController, only: [:index, :show]
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", GoldfishWeb do
-  #   pipe_through :api
-  # end
+  scope "sitemap", GoldfishWeb do
+    pipe_through :xml
+
+    get "/", SitemapController, :index
+  end
 
   defp set_user(conn, _) do
     case Goldfish.Guardian.Plug.current_resource(conn) do
