@@ -52,6 +52,12 @@ defmodule GoldfishWeb.Router do
     get "/", SitemapController, :index
   end
 
+  scope "rss", GoldfishWeb do
+    pipe_through :xml
+
+    get "/", FeedController, :index
+  end
+
   defp set_user(conn, _) do
     case Goldfish.Guardian.Plug.current_resource(conn) do
       nil -> conn

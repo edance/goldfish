@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+  <channel>
+    <title>Evan Dancer</title>
+    <description></description>
+    <link><%= home_url(@conn, :index) %></link>
+    <%= for page <- @pages do %>
+      <item>
+        <title>
+          <![CDATA[<%= page.title %>]]>
+        </title>
+        <link><%= page_url(@conn, :show, page.slug) %></link>
+        <description></description>
+        <pubDate><%= date_format(page) %></pubDate>
+        <guid isPermaLink="true">
+          <%= page_url(@conn, :show, page.slug) %>
+        </guid>
+      </item>
+    <% end %>
+  </channel>
+</rss>
