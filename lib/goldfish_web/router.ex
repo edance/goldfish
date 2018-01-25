@@ -46,13 +46,13 @@ defmodule GoldfishWeb.Router do
     resources "/rooms", Chat.RoomController, only: [:index, :show]
   end
 
-  scope "sitemap", GoldfishWeb do
+  scope "/sitemap", GoldfishWeb do
     pipe_through :xml
 
     get "/", SitemapController, :index
   end
 
-  scope "rss", GoldfishWeb do
+  scope "/rss", GoldfishWeb do
     pipe_through :xml
 
     get "/", FeedController, :index
