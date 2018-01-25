@@ -26,3 +26,5 @@ import './header';
 import './chat';
 import './message-nav';
 import './messagebox';
+import './filepicker';
+import './slug';

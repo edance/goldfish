@@ -1,5 +1,3 @@
 <div class="page new">
-  <h2>New Page</h2>
-
   <%= render "form.html", Map.put(assigns, :action, admin_page_path(@conn, :create)) %>
 </div>

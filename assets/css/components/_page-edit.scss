@@ -1,0 +1,17 @@
+.page.edit, .page.new {
+  width: 100%;
+  margin-bottom: 5em;
+
+  input, textarea {
+    width: 100%;
+    border: 0;
+    padding: 0;
+    font-family: $sans-serif;
+    font-size: 16px;
+  }
+
+  input.title {
+    font-family: $serif;
+    font-size: 30px;
+  }
+}
