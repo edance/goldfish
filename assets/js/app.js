@@ -11,11 +11,13 @@
 //
 // If you no longer want to use a dependency, remember
 // to also remove its path from "config.paths.watched".
-import "phoenix_html";
+import 'phoenix_html';
 
 // Import prism and languages
-import './prism';
-import './prism-elixir';
+import 'prismjs';
+import 'prismjs/components/prism-elixir';
+import 'prismjs/components/prism-ruby';
+import 'prismjs/components/prism-bash';
 
 // Import local files
 //
