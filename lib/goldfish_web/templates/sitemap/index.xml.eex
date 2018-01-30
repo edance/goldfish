@@ -8,7 +8,7 @@
 
   <url>
     <loc><%= page_url(@conn, :index) %></loc>
-    <priority></priority>
+    <priority>0.8</priority>
     <changefreq>daily</changefreq>
   </url>
 

@@ -2,7 +2,7 @@ defmodule GoldfishWeb.SitemapView do
   use GoldfishWeb, :view
 
   def date_format(page) do
-    page.inserted_at
+    page.updated_at
     |> Timex.format!("%FT%T%:zZ", :strftime)
   end
 end
