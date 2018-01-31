@@ -19,6 +19,12 @@ defmodule Goldfish.CMS do
 
   """
   def list_pages do
+    query = from p in Page, where: [draft: false]
+    Repo.all(query)
+    |> Repo.preload(author: :user)
+  end
+
+  def list_pages(%{draft: true}) do
     Page
     |> Repo.all()
     |> Repo.preload(author: :user)

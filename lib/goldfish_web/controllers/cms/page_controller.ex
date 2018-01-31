@@ -8,7 +8,7 @@ defmodule GoldfishWeb.CMS.PageController do
   plug :authorize_page when action in [:edit, :update, :delete]
 
   def index(conn, _params) do
-    pages = CMS.list_pages()
+    pages = CMS.list_pages(%{draft: true})
     render(conn, "index.html", pages: pages)
   end
 
