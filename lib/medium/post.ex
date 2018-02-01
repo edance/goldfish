@@ -1,5 +1,5 @@
 defmodule Medium.Post do
-  defstruct [:id, :title, :contentFormat, :content, :tags, :cannonicalUrl,
+  defstruct [:id, :title, :contentFormat, :content, :tags, :canonicalUrl,
              :publishStatus, :license, :notifyFollowers]
 
   alias Medium.{Client, User}

@@ -10,6 +10,7 @@ defmodule Goldfish.CMS.Page do
     field :slug, :string
     field :views, :integer
     field :draft, :boolean, default: true
+    field :medium_id, :string
 
     belongs_to :author, Author
 
@@ -19,7 +20,7 @@ defmodule Goldfish.CMS.Page do
   @doc false
   def changeset(%Page{} = page, attrs) do
     page
-    |> cast(attrs, [:title, :body, :slug, :draft])
+    |> cast(attrs, [:title, :body, :slug, :draft, :medium_id])
     |> validate_required([:title, :body, :slug])
   end
 end
