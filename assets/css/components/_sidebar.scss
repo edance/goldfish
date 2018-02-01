@@ -24,6 +24,8 @@
 
   .name {
     margin: 16px 0 0;
+    font-family: $bree;
+    color: $dark-gray !important;
   }
 
   .bio {
@@ -31,6 +33,7 @@
   }
 
   h3 {
+    font-family: $bree;
     margin: 38px 0 19px;
   }
 

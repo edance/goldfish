@@ -1,6 +1,9 @@
 <div class="sidebar">
-  <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
-  <h1 class="name">Evan Dancer</h1>
+  <%= link(to: home_path(@conn, :index)) do %>
+    <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
+    <h1 class="name">Evan Dancer</h1>
+  <% end %>
+
   <p class="bio">
     I am a software engineer from University of Michigan. I like to write code and go on long runs on the beach.
   </p>
