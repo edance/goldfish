@@ -9,7 +9,7 @@
 
     <title>Evan Dancer</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:300|Neuton" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif|Open+Sans:300" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
 
     <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
