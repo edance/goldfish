@@ -1,21 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0">
-  <channel>
-    <title>Evan Dancer</title>
-    <description></description>
-    <link><%= home_url(@conn, :index) %></link>
-    <%= for page <- @pages do %>
-      <item>
-        <title>
-          <![CDATA[<%= page.title %>]]>
-        </title>
-        <link><%= page_url(@conn, :show, page.slug) %></link>
-        <description></description>
-        <pubDate><%= date_format(page) %></pubDate>
-        <guid isPermaLink="true">
-          <%= page_url(@conn, :show, page.slug) %>
-        </guid>
-      </item>
-    <% end %>
-  </channel>
-</rss>
+<feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
+  <id><%= home_url(@conn, :index) %></id>
+  <title>Evan Dancer</title>
+  <updated><%= List.first(@pages) |> date_format() %></updated>
+
+  <author>
+    <name>Evan Dancer</name>
+    <email>evancdancer@gmail.com</email>
+  </author>
+  <link rel="self" href="<%= feed_url(@conn, :index) %>" />
+  <link type="text/html" href="<%= home_url(@conn, :index) %>" rel="alternate"/>
+
+  <category term="engineering"/>
+  <category term="programming"/>
+  <category term="web development"/>
+  <category term="elixir"/>
+  <category term="ruby on rails"/>
+  <category term="phoenix framework"/>
+  <category term="running"/>
+
+  <icon>
+    <%= static_url(@conn, "/images/favicon-32x32.png") %>
+  </icon>
+
+  <%= for page <- @pages do %>
+    <entry>
+      <id><%= page_url(@conn, :show, page.slug) %></id>
+      <title><%= page.title %></title>
+      <updated><%= date_format(page) %></updated>
+
+      <content type="html">
+        <![CDATA[<%= html(page) %>]]>
+      </content>
+      <link type="text/html" href="<%= page_url(@conn, :show, page.slug) %>" rel="alternate"/>
+    </entry>
+  <% end %>
+</feed>

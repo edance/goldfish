@@ -19,7 +19,7 @@ defmodule Goldfish.CMS do
 
   """
   def list_pages do
-    query = from p in Page, where: [draft: false]
+    query = from p in Page, where: [draft: false], order_by: [desc: :updated_at]
     Repo.all(query)
     |> Repo.preload(author: :user)
   end
