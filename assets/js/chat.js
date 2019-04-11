@@ -36,7 +36,7 @@ const addMessage = (message) => {
 };
 
 const sendWelcomeMessages = () => {
-  const messages = ['Hi there!', 'I am Evan\'s Website Bot', 'Ask me anything (about him)?'];
+  const messages = ['Hi there!', `I'm Evan Dancer`, 'Ask me anything'];
   messages.map((body, idx) => {
     const message = {
       body,
