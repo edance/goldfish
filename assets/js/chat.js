@@ -36,7 +36,7 @@ const addMessage = (message) => {
 };
 
 const sendWelcomeMessages = () => {
-  const messages = ['Hi there!', `I'm Evan Dancer`, 'Ask me anything'];
+  const messages = ['👋 Hi there!', `I'm Evan Dancer`, 'Ask me anything'];
   messages.map((body, idx) => {
     const message = {
       body,
