@@ -5,6 +5,6 @@
   </div>
 
   <%= if @conn.assigns[:current_user] do %>
-    <%= link "Edit", to: admin_page_path(@conn, :edit, @page) %>
+    <%= link "Edit", to: Routes.admin_page_path(@conn, :edit, @page) %>
   <% end %>
 </div>

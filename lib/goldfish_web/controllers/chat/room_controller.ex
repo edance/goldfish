@@ -5,7 +5,7 @@ defmodule GoldfishWeb.Chat.RoomController do
 
   def index(conn, _params) do
     [first | last] = Chat.list_messages()
-     redirect(conn, to: admin_room_path(conn, :show, first.room_id))
+     redirect(conn, to: Routes.admin_room_path(conn, :show, first.room_id))
   end
 
   def show(conn, %{"id" => room_id}) do

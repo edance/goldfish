@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en">
-  <id><%= home_url(@conn, :index) %></id>
+  <id><%= Routes.home_url(@conn, :index) %></id>
   <title>Evan Dancer</title>
   <updated><%= List.first(@pages) |> date_format() %></updated>
 
@@ -8,8 +8,8 @@
     <name>Evan Dancer</name>
     <email>evancdancer@gmail.com</email>
   </author>
-  <link rel="self" href="<%= feed_url(@conn, :index) %>" />
-  <link type="text/html" href="<%= home_url(@conn, :index) %>" rel="alternate"/>
+  <link rel="self" href="<%= Routes.feed_url(@conn, :index) %>" />
+  <link type="text/html" href="<%= Routes.home_url(@conn, :index) %>" rel="alternate"/>
 
   <category term="engineering"/>
   <category term="programming"/>
@@ -20,19 +20,19 @@
   <category term="running"/>
 
   <icon>
-    <%= static_url(@conn, "/images/favicon-32x32.png") %>
+    <%= Routes.static_url(@conn, "/images/favicon-32x32.png") %>
   </icon>
 
   <%= for page <- @pages do %>
     <entry>
-      <id><%= page_url(@conn, :show, page.slug) %></id>
+      <id><%= Routes.page_url(@conn, :show, page.slug) %></id>
       <title><%= page.title %></title>
       <updated><%= date_format(page) %></updated>
 
       <content type="html">
         <![CDATA[<%= html(page) %>]]>
       </content>
-      <link type="text/html" href="<%= page_url(@conn, :show, page.slug) %>" rel="alternate"/>
+      <link type="text/html" href="<%= Routes.page_url(@conn, :show, page.slug) %>" rel="alternate"/>
     </entry>
   <% end %>
 </feed>

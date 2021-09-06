@@ -1,10 +1,10 @@
 <header class="ui header">
-  <%= link "Home", to: home_path(@conn, :index) %>
-  <%= link "Posts", to: admin_page_path(@conn, :index) %>
-  <%= link "Chat", to: admin_room_path(@conn, :index) %>
-  <%= link "Logout", to: session_path(@conn, :delete), method: :delete %>
+  <%= link "Home", to: Routes.home_path(@conn, :index) %>
+  <%= link "Posts", to: Routes.admin_page_path(@conn, :index) %>
+  <%= link "Chat", to: Routes.admin_room_path(@conn, :index) %>
+  <%= link "Logout", to: Routes.session_path(@conn, :delete), method: :delete %>
 
   <div class="right menu">
-    <%= link to: admin_room_path(@conn, :index), id: "notification-counter" do %>
+    <%= link to: Routes.admin_room_path(@conn, :index), id: "notification-counter" do %>
     <% end %>
 </header>

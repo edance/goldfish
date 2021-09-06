@@ -22,7 +22,7 @@ defmodule GoldfishWeb.CMS.PageController do
       {:ok, page} ->
         conn
         |> put_flash(:info, "Page created successfully.")
-        |> redirect(to: admin_page_path(conn, :show, page))
+        |> redirect(to: Routes.admin_page_path(conn, :show, page))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -43,7 +43,7 @@ defmodule GoldfishWeb.CMS.PageController do
       {:ok, page} ->
         conn
         |> put_flash(:info, "Page updated successfully.")
-        |> redirect(to: admin_page_path(conn, :show, page))
+        |> redirect(to: Routes.admin_page_path(conn, :show, page))
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "edit.html", changeset: changeset)
     end
@@ -54,7 +54,7 @@ defmodule GoldfishWeb.CMS.PageController do
 
     conn
     |> put_flash(:info, "Page deleted successfully.")
-    |> redirect(to: admin_page_path(conn, :index))
+    |> redirect(to: Routes.admin_page_path(conn, :index))
   end
 
   defp require_existing_author(conn, _) do
@@ -70,7 +70,7 @@ defmodule GoldfishWeb.CMS.PageController do
     else
       conn
       |> put_flash(:error, "You can't modify that page")
-      |> redirect(to: admin_page_path(conn, :index))
+      |> redirect(to: Routes.admin_page_path(conn, :index))
       |> halt()
     end
   end

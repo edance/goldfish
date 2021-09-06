@@ -21,8 +21,8 @@ defmodule GoldfishWeb do
     quote do
       use Phoenix.Controller, namespace: GoldfishWeb
       import Plug.Conn
-      import GoldfishWeb.Router.Helpers
       import GoldfishWeb.Gettext
+      alias GoldfishWeb.Router.Helpers, as: Routes
     end
   end
 
@@ -37,9 +37,10 @@ defmodule GoldfishWeb do
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
 
-      import GoldfishWeb.Router.Helpers
       import GoldfishWeb.ErrorHelpers
       import GoldfishWeb.Gettext
+
+      alias GoldfishWeb.Router.Helpers, as: Routes
     end
   end
 

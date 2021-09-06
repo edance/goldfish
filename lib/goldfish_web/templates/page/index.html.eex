@@ -1,12 +1,12 @@
 <div class="page index">
   <h2>Recent Posts</h2>
   <%= if @conn.assigns[:current_user] do %>
-    <%= link "New Page", to: admin_page_path(@conn, :new) %>
+    <%= link "New Page", to: Routes.admin_page_path(@conn, :new) %>
   <% end %>
 
   <ul>
     <%= for page <- @pages do %>
-      <li><%= link(page.title, to: page_path(@conn, :show, page.slug)) %></li>
+      <li><%= link(page.title, to: Routes.page_path(@conn, :show, page.slug)) %></li>
     <% end %>
   </ul>
 </div>

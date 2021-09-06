@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
 
     <title>Admin</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
     <script>window.roomId = "<%= assigns[:room_id] %>";</script>
     <script>window.userToken = "<%= Guardian.Plug.current_token(@conn) %>";</script>
   </head>
@@ -25,6 +25,6 @@
       </div>
     </main>
 
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
   </body>
 </html>

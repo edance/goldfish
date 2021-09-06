@@ -33,7 +33,7 @@
     <h3>Recent Posts</h3>
     <div class="post links container">
       <%= for page <- @pages do %>
-        <%= link(page.title, to: page_path(@conn, :show, page.slug), class: "post link") %>
+        <%= link(page.title, to: Routes.page_path(@conn, :show, page.slug), class: "post link") %>
       <% end %>
     </div>
   <% end %>

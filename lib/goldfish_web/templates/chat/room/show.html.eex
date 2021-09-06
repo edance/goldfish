@@ -1,7 +1,7 @@
 <div class="toc">
   <div id="message-nav" class="message-nav">
     <%= for message <- @recent_messages do %>
-      <%= link(to: admin_room_path(@conn, :show, message.room_id)) do %>
+      <%= link(to: Routes.admin_room_path(@conn, :show, message.room_id)) do %>
         <div class="message-link">
           <div class="from">
             <%= if message.bot do %>
