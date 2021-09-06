@@ -14,6 +14,7 @@ html, body {
   font-weight: 300;
   color: $dark-gray;
 }
+
 a {
   text-decoration: none;
 }
@@ -22,6 +23,7 @@ a {
 h1,h2,h3,h4,h5,h6 {
   font-family: $serif;
   font-weight: normal;
+  margin: 2em 0 0;
 }
 
 h1 {
@@ -38,7 +40,20 @@ p {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
+  margin-top: 0.5em;
   color: $dark-gray;
+}
+
+strong {
+  font-weight: bold;
+}
+
+blockquote {
+  &:before {
+    background: red;
+    height: 100%;
+    width: 2px;
+  }
 }
 
 [contenteditable=true]:empty:before{

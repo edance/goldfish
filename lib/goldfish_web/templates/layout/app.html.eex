@@ -42,8 +42,8 @@
 
     <main role="main">
       <div class="ui home container">
-        <%= render GoldfishWeb.SharedView, "sidebar.html", assigns %>
         <%= render @view_module, @view_template, assigns %>
+        <%= render GoldfishWeb.SharedView, "sidebar.html", assigns %>
       </div>
     </main>
 

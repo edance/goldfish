@@ -2,7 +2,9 @@
   <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
   <h1 class="name">Evan Dancer</h1>
   <p class="bio">
-    I am a software engineer from University of Michigan. I like to write code and go on long runs on the beach.
+    I'm an engineering manager at <a href="https://www.apartmentlist.com" target="_blank">Apartment List</a>.
+    Before this, I started <a href="https://www.cribspot.com" target="_blank">Cribspot</a> (a YC W15 company) with a few of my college friends.
+    I've also been running a lot recently.
   </p>
   <div class="social links container">
     <a href="https://github.com/edance/" target="_blank">
@@ -15,9 +17,9 @@
         <i class="icon-social-linkedin"></i>
       </div>
     </a>
-    <a href="https://www.facebook.com/edancer" target="_blank">
+    <a href="https://www.strava.com/athletes/21099047" target="_blank">
       <div class="social link">
-        <i class="icon-social-facebook"></i>
+        <i class="icon-social-strava"></i>
       </div>
     </a>
     <a href="https://twitter.com/mmmmpizzza" target="_blank">
