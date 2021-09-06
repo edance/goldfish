@@ -1,5 +1,7 @@
 defmodule Goldfish.Repo do
-  use Ecto.Repo, otp_app: :goldfish
+  use Ecto.Repo,
+    otp_app: :goldfish,
+    adapter: Ecto.Adapters.Postgres
 
   @doc """
   Dynamically loads the repository url from the

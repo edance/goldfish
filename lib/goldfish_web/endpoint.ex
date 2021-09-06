@@ -1,7 +1,7 @@
 defmodule GoldfishWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :goldfish
 
-  socket "/socket", GoldfishWeb.UserSocket
+  socket "/socket", GoldfishWeb.UserSocket, websocket: true
 
   # Serve at "/" the static files from "priv/static" directory.
   #

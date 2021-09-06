@@ -9,6 +9,8 @@ use Mix.Config
 config :goldfish,
   ecto_repos: [Goldfish.Repo]
 
+config :phoenix, :json_library, Jason
+
 # Configures the endpoint
 config :goldfish, GoldfishWeb.Endpoint,
   url: [host: "localhost"],

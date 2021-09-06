@@ -5,9 +5,6 @@ defmodule GoldfishWeb.UserSocket do
   channel "room:*", GoldfishWeb.RoomChannel
   channel "notifications", GoldfishWeb.NotificationChannel
 
-  ## Transports
-  transport :websocket, Phoenix.Transports.WebSocket, timeout: 45_000
-
   @doc """
   Connects and authenticates a user with a token
   """

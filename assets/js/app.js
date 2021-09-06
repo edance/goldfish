@@ -7,6 +7,11 @@
 // in vendor, which are never wrapped in imports and
 // therefore are always executed.
 
+// We need to import the CSS so that webpack will load it.
+// The MiniCssExtractPlugin is used to separate it out into
+// its own CSS file.
+import '../css/app.scss';
+
 // Import dependencies
 //
 // If you no longer want to use a dependency, remember
