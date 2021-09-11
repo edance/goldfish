@@ -1,75 +1,19 @@
 @import 'variables';
 
-.sidebar {
-  width: 100%;
-  margin: 2em 0;
-  text-align: center;
-
-  @media screen and (min-width: $tablet) {
-    width: 280px;
-    margin: 2em 4em 0 0;
-  }
-
-  .prof {
-    border-radius: 50%;
-    border: solid 5px $light-gray;
-    width: 100px;
-    height: 100px;
-
-    @media screen and (min-width: $large-phone + 1) {
-      width: 205px;
-      height: 205px;
-    }
-  }
-
-  .name {
-    margin: 16px 0 0;
-  }
-
-  .bio {
-    margin: 2px 0 22px;
-  }
-
-  h3 {
-    margin: 38px 0 19px;
-  }
-
-  .social.link {
+.post-link {
+  &::before {
+    content: "";
     display: inline-block;
-    width: 43px;
-    height: 43px;
-    font-size: 20px;
-    line-height: 43px;
-    text-align: center;
-    color: $dark-gray;
-    border: solid 1px $light-gray;
+    width: 5px;
+    height: 5px;
+    border: solid 1px $primary;
     border-radius: 50%;
+    margin: 0 4px 3px 0;
   }
+}
 
-  .post.links.container {
-    text-align: left;
-  }
-
-  .post.link {
-    display: block;
-    font-size: 14px;
-    color: $dark-gray;
-    margin-bottom: 11px;
-
-    &::before {
-      content: "";
-      display: inline-block;
-      width: 5px;
-      height: 5px;
-      border: solid 1px $primary;
-      border-radius: 50%;
-      margin: 0 4px 1px 0;
-    }
-  }
-
-  .post.link:nth-child(even) {
-    &::before {
-      border-color: $secondary;
-    }
+.post-link:nth-child(even) {
+  &::before {
+    border-color: $secondary;
   }
 }

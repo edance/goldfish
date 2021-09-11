@@ -1,35 +1,40 @@
-<div class="sidebar">
-  <img class="prof" alt="Evan Dancer" src="/images/prof.jpg" />
-  <h1 class="name">Evan Dancer</h1>
-  <p class="bio">
+<div class="text-center w-full md:w-72 my-8">
+  <img class="mx-auto w-24 md:w-48 rounded-full border-4 border-gray-50" alt="Evan Dancer" src="/images/prof.jpg" />
+  <h1 class="mt-4">Evan Dancer</h1>
+  <p class="mt-1 mb-8">
     Engineering Manager at <a href="https://www.apartmentlist.com" target="_blank">Apartment List</a>.
     Previously, I started <a href="https://www.cribspot.com" target="_blank">Cribspot</a> (YC W15) with a few of my college friends.
     I've also been <a href="https://www.strava.com/athletes/21099047" target="_blank">running a lot</a> recently.
   </p>
-  <div class="social links container">
-    <a href="https://github.com/edance/" target="_blank">
-      <div class="social link">
+  <ul class="flex justify-center">
+    <li>
+      <a class="px-4 py-3 rounded-full shadow hover:shadow-lg m-1 ease-linear transition-all duration-150" href="https://github.com/edance/" target="_blank">
         <i class="icon-social-github"></i>
-      </div>
-    </a>
-    <a href="https://www.linkedin.com/in/evan-dancer" target="_blank">
-      <div class="social link">
+      </a>
+    </li>
+
+    <li>
+      <a class="px-4 py-3 rounded-full shadow hover:shadow-lg m-1 ease-linear transition-all duration-150" href="https://www.linkedin.com/in/evan-dancer" target="_blank">
         <i class="icon-social-linkedin"></i>
-      </div>
-    </a>
-    <a href="https://twitter.com/mmmmpizzza" target="_blank">
-      <div class="social link">
+      </a>
+    </li>
+
+    <li>
+      <a class="px-4 py-3 rounded-full shadow hover:shadow-lg m-1 ease-linear transition-all duration-150" href="https://twitter.com/mmmmpizzza" target="_blank">
         <i class="icon-social-twitter"></i>
-      </div>
-    </a>
-  </div>
+      </a>
+    </li>
+  </ul>
 
   <%= if @conn.assigns[:pages] do %>
-    <h3>Recent Posts</h3>
-    <div class="post links container">
+    <h3 class="mb-4">Recent Posts</h3>
+    <ul class="text-left">
+
       <%= for page <- @pages do %>
-        <%= link(page.title, to: Routes.page_path(@conn, :show, page.slug), class: "post link") %>
+        <li class="post-link">
+          <%= link(page.title, to: Routes.page_path(@conn, :show, page.slug)) %>
+        </li>
       <% end %>
-    </div>
+    </ul>
   <% end %>
 </div>
