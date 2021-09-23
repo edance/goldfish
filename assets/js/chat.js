@@ -12,24 +12,14 @@ const scrollToBottom = ()=> {
 };
 
 const addMessage = (message) => {
-  const className = message.bot ? 'bot' : '';
+  const templateId = message.bot ? '#bot-template' : '#user-template';
   const date = moment.utc(message.inserted_at).local().format('h:mm A');
-  const template = `
-  <div class="message ${className}">
-    <div class="avatar"></div>
+  const messageItem = $(templateId)
+        .html()
+        .replaceAll("{{body}}", message.body)
+        .replaceAll("{{relative_time}}", date)
+        .replaceAll("{{inserted_at}}", message.inserted_at);
 
-    <div class="container">
-      <div class="body">
-        ${message.body}
-      </div>
-      <div class="time">
-        ${date}
-      </div>
-    </div>
-  </div>`;
-
-  let messageItem = document.createElement('div');
-  messageItem.innerHTML = template;
   messagesContainer.append(messageItem);
   setSpacerHeight();
   scrollToBottom();

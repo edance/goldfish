@@ -1,6 +1,10 @@
 defmodule GoldfishWeb.MessageView do
   use GoldfishWeb, :view
 
+  def relative_time(datetime) when is_binary(datetime) do
+    "{{relative_time}}"
+  end
+
   def relative_time(datetime) do
     Timex.format!(datetime, "%-l:%M %p", :strftime)
   end

@@ -5,4 +5,14 @@
       <%= render GoldfishWeb.MessageView, "show.html", message: message %>
     <% end %>
   </div>
+
+  <div class="hidden">
+    <div id="bot-template">
+      <%= render GoldfishWeb.MessageView, "show.html", message: %{bot: true, body: "{{body}}", inserted_at: "{{inserted_at}}"} %>
+    </div>
+
+    <div id="user-template">
+      <%= render GoldfishWeb.MessageView, "show.html", message: %{bot: false, user_id: nil, body: "{{body}}", inserted_at: "{{inserted_at}}"} %>
+    </div>
+  </div>
 </div>
