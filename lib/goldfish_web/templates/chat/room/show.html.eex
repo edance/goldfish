@@ -19,6 +19,7 @@
 
 
 <div class="chat container">
-  <%= render GoldfishWeb.SharedView, "message-container.html", assigns %>
+  <%= render GoldfishWeb.SharedView, "messages-container.html", assigns %>
+
   <%= render GoldfishWeb.SharedView, "messagebox.html", assigns %>
 </div>

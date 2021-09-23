@@ -45,13 +45,12 @@ defmodule Goldfish.Mixfile do
       {:comeonin, "~> 4.0"},
       {:argon2_elixir, "~> 1.2"},
       {:guardian, "~> 1.0"},
-      {:ex_api_ai, "~> 0.2.2"},
       {:earmark, "~> 1.2.4"},
       {:timex, "~> 3.1"},
       {:jason, "~> 1.0"},
       {:yaml_elixir, "~> 1.3.1"},
       {:tesla, "~> 1.4.3"},
-      {:joken, "~> 2.0"},
+      {:joken, "~> 2.4.0"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:dotenv, "~> 3.0.0", only: [:dev, :test]}
     ]

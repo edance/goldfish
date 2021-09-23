@@ -15,6 +15,7 @@ defmodule Goldfish.Application do
       # Start the presence
       supervisor(GoldfishWeb.Presence, []),
       # Start your own worker by calling: Goldfish.Worker.start_link(arg1, arg2, arg3)
+      supervisor(Goldfish.Chatbot.AccessToken, []),
       # worker(Goldfish.Worker, [arg1, arg2, arg3]),
     ]
 

@@ -2,6 +2,7 @@ defmodule GoldfishWeb.RoomChannel do
   use GoldfishWeb, :channel
 
   alias Goldfish.Chat
+  alias Goldfish.Chatbot
   alias GoldfishWeb.Presence
 
   def join("room:" <> room_id, _params, socket) do
@@ -30,11 +31,9 @@ defmodule GoldfishWeb.RoomChannel do
   def send_bot_response(socket, %{body: body}) do
     # sessionId cannot be longer than 36 characters
     session_id = socket.assigns.room_id |> String.slice(0..35)
-    opts = %{"sessionId" => session_id}
-    case ApiAi.text_request(body, opts) do
-      {:ok, %{"result" => result}} ->
-        create_bot_message(socket, result, Presence.list("notifications"))
-      {:ok, _} -> nil
+    case Chatbot.detect_intent(body, session_id) do
+      {:ok, message} -> create_bot_message(socket, message, Presence.list("notifications"))
+      {:error} -> nil
     end
   end
 
@@ -55,8 +54,8 @@ defmodule GoldfishWeb.RoomChannel do
     broadcast!(socket, "new_msg", rendered_message)
   end
 
-  defp create_bot_message(socket, result, online_users) when online_users == %{} do
-    attrs = %{body: result["fulfillment"]["speech"],
+  defp create_bot_message(socket, message, online_users) when online_users == %{} do
+    attrs = %{body: message,
               bot: true,
               room_id: socket.assigns.room_id}
     case Chat.create_message(attrs) do
@@ -64,5 +63,5 @@ defmodule GoldfishWeb.RoomChannel do
     end
   end
 
-  defp create_bot_message(_socket, _result, _users), do: nil
+  defp create_bot_message(_socket, _message, _users), do: nil
 end
