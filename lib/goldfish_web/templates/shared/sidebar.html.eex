@@ -1,4 +1,4 @@
-<div class="text-center w-full md:w-72 my-8">
+<div class="flex-none text-center w-full md:w-72 my-8">
   <img class="mx-auto w-24 md:w-48 rounded-full border-4 border-gray-50" alt="Evan Dancer" src="/images/prof.jpg" />
   <h1 class="mt-4">Evan Dancer</h1>
   <p class="mt-1 mb-8">

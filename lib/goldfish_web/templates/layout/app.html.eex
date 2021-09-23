@@ -41,7 +41,7 @@
     <% end %>
 
     <main role="main">
-      <div class="ui home container">
+      <div class="mx-auto flex container">
         <%= render @view_module, @view_template, assigns %>
         <%= render GoldfishWeb.SharedView, "sidebar.html", assigns %>
       </div>

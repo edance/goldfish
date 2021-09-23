@@ -1,4 +1,4 @@
-<div class="messagebox">
+<div class="absolute rounded border messagebox">
   <div id="chat-input" class="input" placeholder="Type Something Here..." contenteditable="true" role="textbox" aria-multiline="true">
   </div>
 </div>

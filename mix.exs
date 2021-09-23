@@ -39,7 +39,6 @@ defmodule Goldfish.Mixfile do
       {:phoenix_ecto, "~> 4.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:plug_cowboy, "~> 2.0"},
       {:plug, "~> 1.7"},
@@ -50,7 +49,11 @@ defmodule Goldfish.Mixfile do
       {:earmark, "~> 1.2.4"},
       {:timex, "~> 3.1"},
       {:jason, "~> 1.0"},
-      {:yaml_elixir, "~> 1.3.1"}
+      {:yaml_elixir, "~> 1.3.1"},
+      {:tesla, "~> 1.4.3"},
+      {:joken, "~> 2.0"},
+      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:dotenv, "~> 3.0.0", only: [:dev, :test]}
     ]
   end
 

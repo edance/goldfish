@@ -1,12 +1,17 @@
-<div class="message <%= if bot(@message) do %>bot<% end %>">
+<div class="flex <%= if bot(@message) do %>bot<% end %>">
   <div class="avatar">
+    <%= if bot(@message) do %>
+      <img class="rounded-full w-14 border-4 border-gray-50" alt="Bot Picture" src="/images/bot-2x.jpg" />
+    <% else %>
+      <img class="rounded-full w-14 border-4 border-gray-50" alt="User Picture" src="/images/user-2x.jpg" />
+    <% end %>
   </div>
 
-  <div class="container">
-    <div class="body">
+  <div class="mx-4 mb-4">
+    <div class="border rounded-lg rounded-tl-none p-4">
       <%= @message.body %>
     </div>
-    <div class="time" data-time="<%= @message.inserted_at %>">
+    <div class="mt-1 text-xs" data-time="<%= @message.inserted_at %>">
       <%= relative_time(@message.inserted_at) %>
     </div>
   </div>

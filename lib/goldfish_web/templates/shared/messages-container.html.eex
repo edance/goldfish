@@ -1,6 +1,6 @@
-<div class="messages-container">
-  <div class="spacer"></div>
-  <div id="messages" class="messages">
+<div id="messages-container" class="h-full pb-16">
+  <div id="spacer"></div>
+  <div id="messages" class="">
     <%= for message <- Enum.reverse(@messages) do %>
       <%= render GoldfishWeb.MessageView, "show.html", message: message %>
     <% end %>

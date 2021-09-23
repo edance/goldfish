@@ -7,7 +7,7 @@ let chatInput         = $('#chat-input');
 let messagesContainer = $('#messages');
 
 const scrollToBottom = ()=> {
-  const $container = $('.messages-container');
+  const $container = $('#messages-container');
   $container.scrollTop($container[0].scrollHeight);
 };
 
@@ -48,18 +48,18 @@ const sendWelcomeMessages = () => {
 };
 
 const setSpacerHeight = () => {
-  const containerHeight = $('.messages-container').height();
-  const messageHeight = $('.messages').height();
+  const containerHeight = $('#messages-container').height();
+  const messageHeight = $('#messages').height();
   if (messageHeight > containerHeight) {
     return;
   }
-  $('.spacer').height(containerHeight - messageHeight);
+  $('#spacer').height(containerHeight - messageHeight);
 };
 
 $('.messagebox').on('keyup', e => {
   const $box = $(e.currentTarget);
   const height = $box.outerHeight();
-  $('.messages-container').outerHeight($box.parent().height() - height);
+  $('#messages-container').outerHeight($box.parent().height() - height);
   setSpacerHeight();
   scrollToBottom();
 });
