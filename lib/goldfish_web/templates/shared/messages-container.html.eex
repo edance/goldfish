@@ -1,6 +1,6 @@
-<div id="messages-container" class="h-full pb-16">
-  <div id="spacer"></div>
-  <div id="messages" class="">
+<div id="messages-container" class="flex-grow flex flex-col overflow-auto">
+  <div class="flex-grow"></div>
+  <div id="messages" class="flex-none">
     <%= for message <- Enum.reverse(@messages) do %>
       <%= render GoldfishWeb.MessageView, "show.html", message: message %>
     <% end %>

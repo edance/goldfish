@@ -8,7 +8,7 @@
   </div>
 
   <div class="mx-4 mb-4">
-    <div class="border rounded-lg rounded-tl-none p-4">
+    <div class="border rounded-lg rounded-tl-none p-4 <%= if bot(@message) do "border-blue-200" else "border-pink-200" end %>">
       <%= @message.body %>
     </div>
     <div class="mt-1 text-xs" data-time="<%= @message.inserted_at %>">

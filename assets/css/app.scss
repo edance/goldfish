@@ -5,6 +5,73 @@
 
 @tailwind utilities;
 
-@import 'layout';
+@layer base {
+  html, body {
+    @apply text-gray-700;
+    @apply leading-normal;
+    @apply tracking-normal;
+    @apply font-light;
+  }
+  h1,h2,h3,h4,h5,h6 {
+    @apply font-serif;
+  }
+  h1 {
+    @apply text-3xl;
+  }
+  h2 {
+    @apply text-2xl;
+  }
+  h3 {
+    @apply text-xl;
+  }
+
+  .page-content {
+    h1,h2,h3,h4,h5,h6 {
+      @apply pt-6;
+    }
+
+    p {
+      @apply py-4;
+    }
+
+    a {
+      @apply text-blue-400;
+      @apply border-dashed;
+      @apply border-b-2;
+      @apply hover:border-gray-400;
+    }
+
+    li {
+      @apply py-3;
+    }
+
+    blockquote {
+      @apply border-l-4;
+      @apply border-pink-500;
+      @apply italic;
+      @apply my-8;
+      @apply pl-8;
+      @apply md:pl-12;
+    }
+
+    code {
+      @apply text-sm;
+    }
+
+    code.inline {
+      @apply bg-gray-200;
+      @apply p-1;
+      @apply rounded;
+      @apply text-pink-800;
+    }
+
+    strong {
+      /* @apply text-gray-900; */
+      @apply font-medium;
+    }
+  }
+}
+
+/* @import 'layout'; */
 @import 'components/base';
 @import 'prism';

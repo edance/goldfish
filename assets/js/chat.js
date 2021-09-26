@@ -21,7 +21,6 @@ const addMessage = (message) => {
         .replaceAll("{{inserted_at}}", message.inserted_at);
 
   messagesContainer.append(messageItem);
-  setSpacerHeight();
   scrollToBottom();
 };
 
@@ -37,20 +36,10 @@ const sendWelcomeMessages = () => {
   });
 };
 
-const setSpacerHeight = () => {
-  const containerHeight = $('#messages-container').height();
-  const messageHeight = $('#messages').height();
-  if (messageHeight > containerHeight) {
-    return;
-  }
-  $('#spacer').height(containerHeight - messageHeight);
-};
-
 $('.messagebox').on('keyup', e => {
   const $box = $(e.currentTarget);
   const height = $box.outerHeight();
   $('#messages-container').outerHeight($box.parent().height() - height);
-  setSpacerHeight();
   scrollToBottom();
 });
 
@@ -65,7 +54,6 @@ chatInput.on('keypress', event => {
 channel.on('new_msg', addMessage);
 
 if (messagesContainer.length) {
-  setSpacerHeight();
   scrollToBottom();
 
   if (!messagesContainer.html().trim()) {
