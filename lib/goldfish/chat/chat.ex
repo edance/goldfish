@@ -19,6 +19,24 @@ defmodule Goldfish.Chat do
     Repo.all(query)
   end
 
+  def list_rooms() do
+    rooms = from m in Message,
+      windows: [w: [partition_by: m.room_id, order_by: [desc: m.inserted_at]]],
+      where: [bot: false],
+      select: %{
+        id: m.id,
+        rank: row_number() |> over(:w),
+        room_id: m.room_id,
+      }
+
+    query = from m in Message,
+      join: r in subquery(rooms),
+      on: m.id == r.id and r.rank == 1,
+      order_by: [desc: m.inserted_at]
+
+    Repo.all(query)
+  end
+
   @doc """
   Returns the list of messages.
 

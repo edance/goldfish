@@ -71,6 +71,33 @@ defmodule Goldfish.CMS do
     Repo.one!(query)
   end
 
+  def get_page_data_by_slug!(slug) do
+    set = from p in Page,
+      where: p.draft == ^false,
+      order_by: p.inserted_at,
+      windows: [w: [order_by: p.inserted_at]],
+      select: %{
+        slug: p.slug,
+        next_slug: lead(p.slug) |> over(:w),
+        next_title: lead(p.title) |> over(:w),
+        prev_slug: lag(p.slug) |> over(:w),
+        prev_title: lag(p.title) |> over(:w)
+      }
+
+    query = from p in Page,
+      where: p.slug == ^slug,
+      join: s in ^subquery(set), on: p.slug == s.slug,
+      select: %{
+        page: p,
+        next_slug: s.next_slug,
+        next_title: s.next_title,
+        prev_slug: s.prev_slug,
+        prev_title: s.prev_title
+      }
+
+    Repo.one!(query)
+  end
+
   @doc """
   Creates a page.
 

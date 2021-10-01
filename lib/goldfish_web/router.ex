@@ -35,6 +35,7 @@ defmodule GoldfishWeb.Router do
     resources "/pages", PageController, only: [:index, :show]
 
     # Route to login
+    get "/login", SessionController, :new
     resources "/sessions", SessionController, only: [:new, :create, :delete],
                                              singleton: true
   end

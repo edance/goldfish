@@ -26,7 +26,7 @@
     </li>
   </ul>
 
-  <%= if @conn.assigns[:pages] do %>
+  <%= if assigns[:pages] do %>
     <h3 class="my-4">Recent Posts</h3>
     <ul class="text-left">
 

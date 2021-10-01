@@ -1,25 +1,25 @@
-<div class="toc">
-  <div id="message-nav" class="message-nav">
-    <%= for message <- @recent_messages do %>
-      <%= link(to: Routes.admin_room_path(@conn, :show, message.room_id)) do %>
-        <div class="message-link">
-          <div class="from">
-            <%= if message.bot do %>
-              Bot
-            <% else %>
-              <%= message.ip_address %>
-            <% end %>
+<div class="h-screen pt-20 flex w-100">
+  <div class="w-80 overflow-auto">
+    <div id="message-nav" class="message-nav border-r-2 border-t-2">
+      <%= for message <- @rooms do %>
+        <%= link(to: Routes.admin_room_path(@conn, :show, message.room_id)) do %>
+          <div class="p-2 border-b-2 <%= if message.room_id == @room_id do "bg-pink-100" end %>">
+            <div class="text-blue-400">
+              <%= if message.bot do %>
+                Bot
+              <% else %>
+                <%= message.ip_address %>
+              <% end %>
+            </div>
+            <div class="body"><%= message.body %></div>
           </div>
-          <div class="body"><%= message.body %></div>
-        </div>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
 
-
-<div class="chat container">
-  <%= render GoldfishWeb.SharedView, "messages-container.html", assigns %>
-
-  <%= render GoldfishWeb.SharedView, "messagebox.html", assigns %>
+  <div class="hidden flex-grow h-100 relative p-8 md:order-last md:flex flex-col">
+    <%= render GoldfishWeb.SharedView, "messages-container.html", assigns %>
+    <%= render GoldfishWeb.SharedView, "messagebox.html", assigns %>
+  </div>
 </div>

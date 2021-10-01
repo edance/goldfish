@@ -14,17 +14,18 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
     <script>window.roomId = "<%= assigns[:room_id] %>";</script>
     <script>window.userToken = "<%= Guardian.Plug.current_token(@conn) %>";</script>
+
+    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
+    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
   </head>
 
   <body class="header" >
-    <%= render GoldfishWeb.SharedView, "header.html", assigns %>
+    <%= render GoldfishWeb.SharedView, "nav.html", assigns %>
 
     <main role="main">
-      <div class="ui home container">
-        <%= render @view_module, @view_template, assigns %>
-      </div>
+      <%= render @view_module, @view_template, assigns %>
     </main>
 
-    <script src="<%= Routes.static_path(@conn, "/js/app.js") %>"></script>
+    <script src="<%= Routes.static_path(@conn, "/js/admin.js") %>"></script>
   </body>
 </html>

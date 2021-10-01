@@ -9,11 +9,9 @@ defmodule GoldfishWeb.PageController do
   end
 
   def show(conn, %{"id" => slug}) do
-    page =
-      slug
-      |> CMS.get_page_by_slug!()
-      |> CMS.inc_page_views()
+    data = CMS.get_page_data_by_slug!(slug)
+    CMS.inc_page_views(data.page)
 
-    render(conn, "show.html", page: page)
+    render(conn, "show.html", page: data.page, data: data)
   end
 end

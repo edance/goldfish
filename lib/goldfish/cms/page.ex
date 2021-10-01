@@ -11,6 +11,7 @@ defmodule Goldfish.CMS.Page do
     field :views, :integer
     field :draft, :boolean, default: true
     field :medium_id, :string
+    field :published_at, :utc_datetime
 
     belongs_to :author, Author
 

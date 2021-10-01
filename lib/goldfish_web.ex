@@ -40,6 +40,8 @@ defmodule GoldfishWeb do
       import GoldfishWeb.ErrorHelpers
       import GoldfishWeb.Gettext
 
+      import PhoenixActiveLink
+
       alias GoldfishWeb.Router.Helpers, as: Routes
     end
   end

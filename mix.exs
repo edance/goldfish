@@ -51,6 +51,7 @@ defmodule Goldfish.Mixfile do
       {:yaml_elixir, "~> 1.3.1"},
       {:tesla, "~> 1.4.3"},
       {:joken, "~> 2.4.0"},
+      {:phoenix_active_link, "~> 0.2.1"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:dotenv, "~> 3.0.0", only: [:dev, :test]}
     ]

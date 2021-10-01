@@ -9,9 +9,8 @@ defmodule GoldfishWeb.Chat.RoomController do
   end
 
   def show(conn, %{"id" => room_id}) do
-    recent = Chat.list_messages()
+    rooms = Chat.list_rooms()
     messages = Chat.list_messages(room_id)
-    render(conn, "show.html", room_id: room_id, messages: messages,
-                              recent_messages: recent)
+    render(conn, "show.html", room_id: room_id, messages: messages, rooms: rooms)
   end
 end

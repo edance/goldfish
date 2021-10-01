@@ -46,8 +46,8 @@ $('.messagebox').on('keyup', e => {
 chatInput.on('keypress', event => {
   if(event.keyCode === 13 && !event.shiftKey){
     event.preventDefault();
-    channel.push('new_msg', {body: chatInput.text()});
-    chatInput.empty();
+    channel.push('new_msg', {body: chatInput.val()});
+    chatInput.val('');
   }
 });
 

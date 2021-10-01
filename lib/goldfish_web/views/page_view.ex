@@ -18,4 +18,10 @@ defmodule GoldfishWeb.PageView do
     options = %Earmark.Options{code_class_prefix: "lang- language-"}
     Earmark.as_html!(body, options)
   end
+
+  def snippet(page) do
+    snippet = Earmark.as_html!(page.body)
+    snippet = String.split(snippet, "</p>") |> List.first()
+    "#{snippet}</p>"
+  end
 end

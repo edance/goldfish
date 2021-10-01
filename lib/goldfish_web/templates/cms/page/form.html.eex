@@ -21,7 +21,7 @@
   <%= hidden_input f, :slug, class: "slug" %>
 
   <div class="form-group">
-    <%= textarea f, :body, class: "filepicker", rows: "20", placeholder: "Type something..." %>
+    <%= textarea f, :body, id: "editor", class: "filepicker", rows: "20", placeholder: "Type something..." %>
     <%= error_tag f, :body %>
     <p>
       <a href="#" class="open-picker">Add image</a>
