@@ -38,4 +38,3 @@ import './slug';
 import './nav';
 
 // Admin stuff
-import './editor';

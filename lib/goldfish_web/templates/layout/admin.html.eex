@@ -14,9 +14,7 @@
     <link rel="stylesheet" href="<%= Routes.static_path(@conn, "/css/app.css") %>">
     <script>window.roomId = "<%= assigns[:room_id] %>";</script>
     <script>window.userToken = "<%= Guardian.Plug.current_token(@conn) %>";</script>
-
-    <link rel="stylesheet" href="https://unpkg.com/easymde/dist/easymde.min.css">
-    <script src="https://unpkg.com/easymde/dist/easymde.min.js"></script>
+    <script>window.FILEPICKER_API_KEY = "<%= System.get_env("FILEPICKER_API_KEY") %>";</script>
   </head>
 
   <body class="header" >

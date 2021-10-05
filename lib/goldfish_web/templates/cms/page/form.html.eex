@@ -1,34 +1,28 @@
-<%= form_for @changeset, @action, fn f -> %>
+<%= form_for @changeset, @action, [class: "w-full flex flex-col"], fn f -> %>
   <%= if @changeset.action do %>
     <div class="alert alert-danger">
       <p>Oops, something went wrong! Please check the errors below.</p>
     </div>
   <% end %>
 
-  <div class="form-group">
-    <label>
-      <%= checkbox(f, :draft) %>
-      Draft
-    </label>
-    <%= error_tag f, :draft %>
-  </div>
+  <label>
+    <%= checkbox(f, :draft) %>
+    Draft
+  </label>
+  <%= error_tag f, :draft %>
 
-  <div class="form-group">
-    <%= text_input f, :title, class: "title", placeholder: "Title" %>
-    <%= error_tag f, :title %>
-  </div>
+  <%= text_input f, :title, class: "title text-3xl font-serif mb-4", placeholder: "Title" %>
+  <%= error_tag f, :title %>
 
   <%= hidden_input f, :slug, class: "slug" %>
 
-  <div class="form-group">
-    <%= textarea f, :body, id: "editor", class: "filepicker", rows: "20", placeholder: "Type something..." %>
-    <%= error_tag f, :body %>
-    <p>
-      <a href="#" class="open-picker">Add image</a>
-    </p>
-  </div>
+  <%= textarea f, :body, id: "editor", class: "w-100", rows: "20", placeholder: "Type something..." %>
+  <%= error_tag f, :body %>
+  <p>
+    <a href="#" class="open-picker text-sm text-blue-500">Add image</a>
+  </p>
 
   <div class="form-group">
-    <%= submit "Publish", class: "btn btn-primary" %>
+    <%= submit "Save", class: "border rounded-lg py-2 px-4 my-4 border-pink-400" %>
   </div>
 <% end %>

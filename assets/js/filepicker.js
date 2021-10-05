@@ -6,8 +6,8 @@ function fileToMarkdown(file) {
 }
 
 function initFilePicker() {
-  const client = filestack.init('Aj7z7GQJ7TunhKUAtIwcdz');
-  const $textarea = $('textarea.filepicker');
+  const client = filestack.init(window.FILEPICKER_API_KEY);
+  const $textarea = $('#editor');
 
   $('.open-picker').click(() => {
     client.pick({
@@ -23,6 +23,6 @@ function initFilePicker() {
   });
 }
 
-if ($('textarea.filepicker')[0]) {
+if ($('textarea#editor')[0]) {
   initFilePicker();
 }
