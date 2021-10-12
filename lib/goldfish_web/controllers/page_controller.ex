@@ -8,6 +8,18 @@ defmodule GoldfishWeb.PageController do
     render(conn, "index.html", pages: pages)
   end
 
+  def projects(conn, _params) do
+    pages = CMS.list_project_pages()
+    render(conn, "projects.html", pages: pages)
+  end
+
+  def about(conn, _params) do
+    page = CMS.get_about_page()
+    |> CMS.inc_page_views()
+
+    render(conn, "about.html", page: page)
+  end
+
   def show(conn, %{"id" => slug}) do
     data = CMS.get_page_data_by_slug!(slug)
     CMS.inc_page_views(data.page)

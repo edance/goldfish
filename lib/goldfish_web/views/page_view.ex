@@ -5,7 +5,11 @@ defmodule GoldfishWeb.PageView do
     page.title
   end
 
-  def title(_, _) do
+  def title("projects.html", _) do
+    "Projects"
+  end
+
+  def title(_x, _y) do
     "Posts"
   end
 

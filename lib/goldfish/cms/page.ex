@@ -1,7 +1,7 @@
 defmodule Goldfish.CMS.Page do
   use Ecto.Schema
   import Ecto.Changeset
-  alias Goldfish.CMS.{Page, Author}
+  alias Goldfish.CMS.{Page, Author, Tag}
 
 
   schema "pages" do
@@ -14,6 +14,8 @@ defmodule Goldfish.CMS.Page do
     field :published_at, :utc_datetime
 
     belongs_to :author, Author
+
+    many_to_many :tags, Tag, join_through: "page_tags"
 
     timestamps()
   end

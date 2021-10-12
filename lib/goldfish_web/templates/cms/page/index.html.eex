@@ -2,6 +2,13 @@
 
 <div class="mx-auto flex h-screen container pt-20">
   <div class="flex-grow h-100 p-8 md:order-last md:flex flex-col">
+    <div>
+      <%= link(to: Routes.admin_page_path(@conn, :new), class: "border rounded-lg border-blue-200 hover:bg-blue-100 text-lg p-2 mt-8") do %>
+        New Page
+      <% end %>
+    </div>
+
+
     <%= for page <- @pages do %>
       <div>
         <h2 class="break-normal pt-6 pb-2">
@@ -18,7 +25,6 @@
       </div>
     <% end %>
   </div>
-  <%= render GoldfishWeb.SharedView, "sidebar.html", Map.delete(assigns, :pages) %>
 </div>
 
 

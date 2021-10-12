@@ -21,13 +21,36 @@ defmodule Goldfish.CMS do
   def list_pages do
     query = from p in Page, where: [draft: false], order_by: [desc: :updated_at]
     Repo.all(query)
-    |> Repo.preload(author: :user)
+    |> Repo.preload([:tags, author: :user])
   end
 
   def list_pages(%{draft: true}) do
     Page
     |> Repo.all()
-    |> Repo.preload(author: :user)
+    |> Repo.preload([:tags, author: :user])
+  end
+
+  def list_project_pages() do
+    query = from p in Page,
+      join: t in assoc(p, :tags),
+      where: [draft: false],
+      where: t.name == "project",
+      order_by: [desc: :updated_at]
+
+    Repo.all(query)
+    |> Repo.preload([:tags, author: :user])
+  end
+
+  def get_about_page() do
+    query = from p in Page,
+      join: t in assoc(p, :tags),
+      where: [draft: false],
+      where: t.name == "about",
+      order_by: [desc: :updated_at],
+    limit: 1
+
+    Repo.one(query)
+    |> Repo.preload([:tags, author: :user])
   end
 
   @doc """
@@ -47,7 +70,7 @@ defmodule Goldfish.CMS do
   def get_page!(id) do
     Page
     |> Repo.get!(id)
-    |> Repo.preload(author: :user)
+    |> Repo.preload([:tags, author: :user])
   end
 
   @doc """
@@ -67,7 +90,7 @@ defmodule Goldfish.CMS do
   def get_page_by_slug!(slug) do
     query = from p in Page,
       where: p.slug == ^slug,
-      preload: [author: :user]
+      preload: [:tags, author: :user]
     Repo.one!(query)
   end
 
@@ -113,6 +136,7 @@ defmodule Goldfish.CMS do
   def create_page(%Author{} = author, attrs \\ %{}) do
     %Page{}
     |> Page.changeset(attrs)
+    |> put_tags(attrs)
     |> Ecto.Changeset.put_change(:author_id, author.id)
     |> Repo.insert()
   end
@@ -132,7 +156,17 @@ defmodule Goldfish.CMS do
   def update_page(%Page{} = page, attrs) do
     page
     |> Page.changeset(attrs)
+    |> put_tags(attrs)
     |> Repo.update()
+  end
+
+  defp put_tags(changeset, %{"tags" => tags}) when is_list(tags) do
+    tags = list_tags(tags)
+    Ecto.Changeset.put_assoc(changeset, :tags, tags)
+  end
+
+  defp put_tags(changeset, attrs) do
+    changeset
   end
 
   @doc """
@@ -162,6 +196,23 @@ defmodule Goldfish.CMS do
   """
   def change_page(%Page{} = page) do
     Page.changeset(page, %{})
+  end
+
+  alias Goldfish.CMS.Tag
+
+  def list_tags() do
+    Repo.all(Tag)
+  end
+
+  def list_tags(ids) do
+    query = from t in Tag, where: t.id in ^ids
+    Repo.all(query)
+  end
+
+  def create_tag(attrs \\ %{}) do
+    %Tag{}
+    |> Tag.changeset(attrs)
+    |> Repo.insert()
   end
 
   alias Goldfish.CMS.Author

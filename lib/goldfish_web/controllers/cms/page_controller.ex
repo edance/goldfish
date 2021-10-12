@@ -13,8 +13,9 @@ defmodule GoldfishWeb.CMS.PageController do
   end
 
   def new(conn, _params) do
-    changeset = CMS.change_page(%Page{})
-    render(conn, "new.html", changeset: changeset)
+    changeset = CMS.change_page(%Page{tags: []})
+    tags = CMS.list_tags()
+    render(conn, "new.html", changeset: changeset, tags: tags)
   end
 
   def create(conn, %{"page" => page_params}) do
@@ -35,7 +36,8 @@ defmodule GoldfishWeb.CMS.PageController do
 
   def edit(conn, _) do
     changeset = CMS.change_page(conn.assigns.page)
-    render(conn, "edit.html", changeset: changeset)
+    tags = CMS.list_tags()
+    render(conn, "edit.html", changeset: changeset, tags: tags)
   end
 
   def update(conn, %{"page" => page_params}) do

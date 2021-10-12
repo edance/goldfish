@@ -1,0 +1,25 @@
+<%= render GoldfishWeb.SharedView, "nav.html", assigns %>
+
+<div class="mx-auto flex h-screen container pt-20">
+  <div class="flex-grow h-100 p-8 md:order-last md:flex flex-col">
+    <%= for page <- @pages do %>
+      <div>
+        <%= link(to: Routes.page_path(@conn, :show, page.slug)) do %>
+          <h2 class="break-normal pt-6 pb-2 text-3xl md:text-4xl">
+            <%= page.title %>
+          </h2>
+        <% end %>
+
+        <p class="text-sm md:text-base font-normal text-gray-600">
+          Published <%= published_date(page) %>
+        </p>
+
+        <p>
+          <%= raw(snippet(page)) %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+  <%= render GoldfishWeb.SharedView, "sidebar.html", Map.delete(assigns, :pages) %>
+</div>
+

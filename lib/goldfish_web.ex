@@ -42,6 +42,8 @@ defmodule GoldfishWeb do
 
       import PhoenixActiveLink
 
+      import GoldfishWeb.Helpers.CheckboxHelper
+
       alias GoldfishWeb.Router.Helpers, as: Routes
     end
   end
