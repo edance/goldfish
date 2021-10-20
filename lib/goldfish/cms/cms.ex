@@ -19,25 +19,32 @@ defmodule Goldfish.CMS do
 
   """
   def list_pages do
-    query = from p in Page, where: [draft: false], order_by: [desc: :updated_at]
-    Repo.all(query)
+    Page
+    |> recently_published()
+    |> Repo.all()
     |> Repo.preload([:tags, author: :user])
   end
 
   def list_pages(%{draft: true}) do
     Page
+    |> order_by([a], [desc: a.updated_at])
     |> Repo.all()
     |> Repo.preload([:tags, author: :user])
   end
 
   def list_project_pages() do
-    query = from p in Page,
-      join: t in assoc(p, :tags),
-      where: [draft: false],
-      where: t.name == "project",
-      order_by: [desc: :updated_at]
+    Page
+    |> by_tag("project")
+    |> recently_published()
+    |> Repo.all()
+    |> Repo.preload([:tags, author: :user])
+  end
 
-    Repo.all(query)
+  def list_running_pages() do
+    Page
+    |> by_tag("running")
+    |> recently_published()
+    |> Repo.all()
     |> Repo.preload([:tags, author: :user])
   end
 
@@ -46,11 +53,31 @@ defmodule Goldfish.CMS do
       join: t in assoc(p, :tags),
       where: [draft: false],
       where: t.name == "about",
-      order_by: [desc: :updated_at],
+      order_by: [desc: :published_at],
     limit: 1
 
     Repo.one(query)
     |> Repo.preload([:tags, author: :user])
+  end
+
+  def recently_published(query) do
+    from q in query,
+      where: [draft: false],
+      order_by: [desc: :published_at]
+  end
+
+  def by_tag(query, tag_name) do
+    from q in query,
+      join: t in assoc(q, :tags),
+      where: t.name == ^tag_name
+  end
+
+  defp query_pages_by_tag(tag_name) do
+    from p in Page,
+      join: t in assoc(p, :tags),
+      where: [draft: false],
+      where: t.name == ^tag_name,
+      order_by: [desc: :updated_at]
   end
 
   @doc """

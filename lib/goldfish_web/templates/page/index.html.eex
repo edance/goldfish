@@ -1,17 +1,21 @@
 <%= render GoldfishWeb.SharedView, "nav.html", assigns %>
 
-<div class="mx-auto flex h-screen container pt-20">
+<div class="mx-auto md:flex h-screen container pt-16">
   <div class="flex-grow h-100 p-8 md:order-last md:flex flex-col">
+    <h1 class="break-normal md:hidden pb-6 text-4xl">
+      Posts
+    </h1>
+
     <%= for page <- @pages do %>
-      <div>
+      <div class="pb-6">
         <%= link(to: Routes.page_path(@conn, :show, page.slug)) do %>
-          <h2 class="break-normal pt-6 pb-2 text-3xl md:text-4xl">
+          <h2 class="inline-block break-normal mb-2 text-3xl md:text-4xl border-dashed border-b-2 hover:border-gray-400">
             <%= page.title %>
           </h2>
         <% end %>
 
         <p class="text-sm md:text-base font-normal text-gray-600">
-          Published <%= published_date(page) %>
+          <%= published_text(page) %>
         </p>
 
         <p>

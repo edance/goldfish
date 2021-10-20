@@ -34,6 +34,7 @@ defmodule GoldfishWeb.Router do
     get "/", HomeController, :index
     resources "/pages", PageController, only: [:index, :show]
     get "/projects", PageController, :projects
+    get "/running", PageController, :running
     get "/about", PageController, :about
 
     # Route to login

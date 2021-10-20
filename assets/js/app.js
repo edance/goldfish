@@ -21,3 +21,6 @@ import './messagebox';
 import './filepicker';
 import './slug';
 import './nav';
+
+// Turbolinks
+import './turbolinks';

@@ -13,9 +13,12 @@ defmodule GoldfishWeb.PageView do
     "Posts"
   end
 
-  def published_date(%{inserted_at: inserted_at}) do
-    inserted_at
-    |> Timex.format!("%B %-d, %Y", :strftime)
+  def published_text(%{published_at: nil, updated_at: updated_at}) do
+    "Updated at #{format_time(updated_at)}"
+  end
+
+  def published_text(%{published_at: published_at}) do
+    "Published at #{format_time(published_at)}"
   end
 
   def markdown(body) do
@@ -27,5 +30,9 @@ defmodule GoldfishWeb.PageView do
     snippet = Earmark.as_html!(page.body)
     snippet = String.split(snippet, "</p>") |> List.first()
     "#{snippet}</p>"
+  end
+
+  defp format_time(time) do
+    Timex.format!(time, "%B %-d, %Y", :strftime)
   end
 end

@@ -5,6 +5,14 @@
 
     <div class="pl-4">
       <%= link "Evan Dancer", to: Routes.home_path(@conn, :index), class: "text-gray-900 text-base no-underline hover:no-underline font-extrabold text-xl" %>
+
+      <%= if @conn.assigns[:current_user] do %>
+        <div class="bg-pink-100 inline-flex items-center text-xs rounded mt-2 ml-2 overflow-hidden">
+          <span class="mx-1 leading-relaxed truncate max-w-xs">
+            Admin
+          </span>
+        </div>
+      <% end %>
     </div>
 
     <div class="block lg:hidden pr-4">
@@ -20,19 +28,11 @@
       <ul class="list-reset lg:flex justify-end flex-1 items-center">
         <%= if @conn.assigns[:current_user] do %>
           <li class="mr-3">
-            <%= nav_link(@conn, "Posts", to: Routes.admin_page_path(@conn, :index)) %>
+            <%= nav_link(@conn, "Write", to: Routes.admin_page_path(@conn, :index)) %>
           </li>
 
           <li class="mr-3">
-            <%= nav_link(@conn, "Chat", to: Routes.admin_room_path(@conn, :index)) %>
-          </li>
-
-          <li class="mr-3">
-            <%= nav_link(@conn, "Projects", to: Routes.page_path(@conn, :projects)) %>
-          </li>
-
-          <li class="mr-3">
-            <%= nav_link(@conn, "About", to: Routes.page_path(@conn, :about)) %>
+            <%= nav_link(@conn, "Chat Rooms", to: Routes.admin_room_path(@conn, :index)) %>
           </li>
 
           <li class="mr-3">
@@ -49,6 +49,10 @@
 
           <li class="mr-3">
             <%= nav_link(@conn, "Projects", to: Routes.page_path(@conn, :projects)) %>
+          </li>
+
+          <li class="mr-3">
+            <%= nav_link(@conn, "Running", to: Routes.page_path(@conn, :running)) %>
           </li>
 
           <li class="mr-3">

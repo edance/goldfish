@@ -1,6 +1,6 @@
 <%= render GoldfishWeb.SharedView, "nav.html", assigns %>
 
-<div class="mx-auto flex container h-screen pt-20">
+<div class="mx-auto flex container h-screen pt-16">
   <div class="hidden flex-grow h-100 relative p-8 md:order-last md:flex flex-col">
     <%= render GoldfishWeb.SharedView, "messages-container.html", assigns %>
     <%= render GoldfishWeb.SharedView, "messagebox.html", assigns %>

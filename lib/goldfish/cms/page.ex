@@ -25,5 +25,13 @@ defmodule Goldfish.CMS.Page do
     page
     |> cast(attrs, [:title, :body, :slug, :draft, :medium_id])
     |> validate_required([:title, :body, :slug])
+    |> set_published_at()
   end
+
+  defp set_published_at(%{changes: %{draft: false}} = changeset) do
+    now = DateTime.utc_now() |> DateTime.truncate(:second)
+    put_change(changeset, :published_at, now)
+  end
+
+  defp set_published_at(changeset), do: changeset
 end

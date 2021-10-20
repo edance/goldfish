@@ -1,10 +1,10 @@
 <div class="flex-none text-center w-full md:w-72 my-8">
-  <img class="mx-auto w-24 md:w-48 rounded-full border-4 border-gray-50" alt="Evan Dancer" src="/images/prof.jpg" />
+  <img class="mx-auto w-24 h-24 md:w-48 md:h-48 rounded-full border-4 border-gray-50" alt="Evan Dancer" src="/images/prof.jpg" />
   <h1 class="mt-4">Evan Dancer</h1>
-  <p class="mt-1 mb-4">
-    Engineering Manager at <a href="https://www.apartmentlist.com" target="_blank">Apartment List</a>.
-    Previously, I started <a href="https://www.cribspot.com" target="_blank">Cribspot</a> (YC W15) with a few of my college friends.
-    I've also been <a href="https://www.strava.com/athletes/21099047" target="_blank">running a lot</a> recently.
+  <p class="mt-1 mb-4 max-w-md mx-auto">
+    Engineering Manager at <a href="https://www.apartmentlist.com" target="_blank" class="text-blue-400 border-dashed border-b-2 hover:border-gray-400">Apartment List</a>.
+    Previously, I started <a href="https://www.cribspot.com" target="_blank" class="text-pink-400 border-dashed border-b-2 hover:border-gray-400">Cribspot</a> (YC W15) with a few of my college friends.
+    I've also been <a href="https://www.strava.com/athletes/21099047" target="_blank" class="text-blue-400 border-dashed border-b-2 hover:border-gray-400">running a lot</a> recently.
   </p>
   <ul class="flex py-4 justify-center">
     <li>
