@@ -8,6 +8,7 @@ defmodule Goldfish.Chat do
 
   alias Goldfish.Chat.Message
   alias Goldfish.Accounts.User
+  alias Goldfish.MessageReporter
 
   @doc """
   Returns a list of recent messages.
@@ -83,10 +84,16 @@ defmodule Goldfish.Chat do
 
   """
   def create_message(%User{} = user, attrs) do
-    %Message{}
+    message = %Message{}
     |> Message.changeset(attrs)
     |> Ecto.Changeset.put_change(:user_id, user.id)
-    |> Repo.insert()
+
+    case Repo.insert(message) do
+      {:ok, message} ->
+        Task.start(fn -> MessageReporter.report_new_message(message) end)
+        {:ok, message}
+      error -> error
+    end
   end
 
   @doc """
@@ -102,9 +109,14 @@ defmodule Goldfish.Chat do
 
   """
   def create_message(attrs) do
-    %Message{}
-    |> Message.changeset(attrs)
-    |> Repo.insert()
+    message = Message.changeset(%Message{}, attrs)
+
+    case Repo.insert(message) do
+      {:ok, message} ->
+        Task.start(fn -> MessageReporter.report_new_message(message) end)
+        {:ok, message}
+      error -> error
+    end
   end
 
   @doc """
